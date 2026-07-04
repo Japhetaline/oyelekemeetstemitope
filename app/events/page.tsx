@@ -1,4 +1,7 @@
 'use client'
+import { motion, useReducedMotion } from 'framer-motion'
+import { Reveal, Stagger, StaggerItem, EASE } from '@/components/motion/Reveal'
+
 export default function Events() {
   const events = [
     {
@@ -12,45 +15,61 @@ export default function Events() {
       textColor: 'var(--cream)',
       dark: true,
       desc: 'Our traditional Nigerian engagement — a deeply meaningful ceremony where the groom&apos;s family formally presents gifts and asks for the bride&apos;s hand. Diaspora family and friends join via Zoom.',
-      details: ['Traditional items presentation', 'Igbo and Yoruba blessings', 'Zoom link sent to RSVPs', 'Dresscode: Full traditional attire'],
+      details: ['Traditional items presentation', 'Yoruba prayers and blessings', 'Zoom link sent to RSVPs', 'Dresscode: Full traditional attire'],
     },
     {
       num: '02',
-      title: 'Wedding Day',
+      title: 'Wedding Nikah',
       date: '10 October 2026',
       time: '12:00 PM WAT',
-      location: 'The Wheatbaker Hotel, Lagos',
+      location: 'DLK Event Centre, Abeokuta',
       type: 'In Person + Livestream',
-      color: 'var(--gold)',
-      textColor: 'var(--charcoal)',
-      dark: false,
-      desc: 'The main event. A beautiful ceremony followed by a reception filled with music, dancing, Nigerian cuisine, and love. We cannot wait to celebrate with you.',
-      details: ['Church ceremony 12:00 PM', 'Reception from 3:00 PM', 'After-party from 9:00 PM', 'Aso-ebi in wine, white & peach'],
+      color: 'var(--charcoal)',
+      textColor: 'var(--cream)',
+      dark: true,
+      desc: 'The main event. Our Nikah — a sacred Islamic marriage ceremony — followed by a Walimah reception filled with prayer, music, dancing, Nigerian cuisine, and love. We cannot wait to celebrate with you.',
+      details: ['Nikah ceremony 12:00 PM', 'Walimah reception from 3:00 PM', 'Celebration from 9:00 PM', 'Aso-ebi in burgundy, ivory & gold'],
     },
   ]
 
+  const programme = [
+    { time: '12:00 PM', item: 'Welcome & opening prayers' },
+    { time: '12:20 PM', item: 'Introduction of both families' },
+    { time: '12:45 PM', item: 'Presentation of traditional items' },
+    { time: '1:15 PM', item: 'Bride price negotiation (symbolic)' },
+    { time: '1:45 PM', item: 'Palm wine ceremony' },
+    { time: '2:00 PM', item: 'Kola nut blessing by elders' },
+    { time: '2:20 PM', item: 'Exchange of gifts and goodwill' },
+    { time: '2:45 PM', item: 'Closing prayers & celebration' },
+  ]
+
+  const reduce = useReducedMotion()
+
   return (
     <div style={{ paddingTop: '64px' }}>
-      <section style={{ background: 'var(--charcoal)', padding: '100px 32px', textAlign: 'center' }}>
-        <div style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '20px' }}>✦ Events ✦</div>
-        <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(40px, 7vw, 80px)', color: 'var(--cream)', fontStyle: 'italic', fontWeight: 300 }}>
-          Two celebrations
-        </h1>
+      <section style={{ background: "linear-gradient(rgba(76,14,26,0.72), rgba(76,14,26,0.84)), url('/assests/laykay03.jpeg') center/cover", padding: '100px 32px', textAlign: 'center' }}>
+        <Reveal>
+          <div style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '20px' }}>✦ Events ✦</div>
+          <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(40px, 7vw, 80px)', color: 'var(--cream)', fontStyle: 'italic', fontWeight: 300 }}>
+            Two celebrations
+          </h1>
+        </Reveal>
       </section>
 
-      <section style={{ padding: '80px 32px', maxWidth: '900px', margin: '0 auto' }}>
+      <Stagger as="section" style={{ padding: '80px 32px', maxWidth: '900px', margin: '0 auto' }}>
         {events.map((ev, i) => (
-          <div key={i} style={{
+          <StaggerItem key={i}>
+          <motion.div whileHover={reduce ? undefined : { y: -4 }} transition={{ duration: 0.4, ease: EASE }} style={{
             background: ev.color, padding: '56px 48px',
             marginBottom: '2px', position: 'relative',
           }}>
-            <div style={{ fontSize: '11px', letterSpacing: '0.3em', color: ev.color === 'var(--gold)' ? 'rgba(92,34,51,0.6)' : 'var(--gold)', marginBottom: '16px' }}>{ev.num}</div>
+            <div style={{ fontSize: '11px', letterSpacing: '0.3em', color: ev.color === 'var(--gold)' ? 'rgba(110,21,38,0.6)' : 'var(--gold)', marginBottom: '16px' }}>{ev.num}</div>
             <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(28px, 4vw, 42px)', color: ev.textColor, fontStyle: 'italic', marginBottom: '12px' }}>
               {ev.title}
             </h2>
             <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', marginBottom: '24px' }}>
               {[ev.date, ev.location, ev.type].map((tag, j) => (
-                <span key={j} style={{ fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', padding: '4px 12px', border: `0.5px solid ${ev.dark ? 'rgba(208,138,102,0.4)' : 'rgba(92,34,51,0.25)'}`, color: ev.dark ? 'var(--gold)' : 'var(--stone)' }}>
+                <span key={j} style={{ fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', padding: '4px 12px', border: `0.5px solid ${ev.dark ? 'rgba(185,142,76,0.4)' : 'rgba(110,21,38,0.25)'}`, color: ev.dark ? 'var(--gold)' : 'var(--stone)' }}>
                   {tag}
                 </span>
               ))}
@@ -68,8 +87,45 @@ export default function Events() {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
+          </StaggerItem>
         ))}
+      </Stagger>
+
+      {/* ORDER OF EVENTS — ceremony programme */}
+      <section style={{ background: 'var(--cream-dark)', padding: '80px 32px' }}>
+        <Reveal style={{ textAlign: 'center', marginBottom: '56px' }}>
+          <div style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '20px' }}>✦ Order of Events ✦</div>
+          <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(32px, 5vw, 52px)', color: 'var(--charcoal)', fontStyle: 'italic' }}>
+            Ceremony programme
+          </h2>
+        </Reveal>
+
+        <Stagger style={{ maxWidth: '640px', margin: '0 auto' }}>
+          {programme.map((p, i) => (
+            <StaggerItem key={i}>
+              <motion.div
+                whileHover={reduce ? undefined : { x: 6 }}
+                transition={{ duration: 0.35, ease: EASE }}
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: '110px 1fr',
+                  alignItems: 'baseline',
+                  gap: '24px',
+                  padding: '20px 8px',
+                  borderBottom: i === programme.length - 1 ? 'none' : '0.5px solid rgba(110,21,38,0.15)',
+                }}
+              >
+                <div style={{ fontSize: '13px', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold-dark)', fontWeight: 500 }}>
+                  {p.time}
+                </div>
+                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '22px', color: 'var(--charcoal)', fontStyle: 'italic' }}>
+                  {p.item}
+                </div>
+              </motion.div>
+            </StaggerItem>
+          ))}
+        </Stagger>
       </section>
     </div>
   )

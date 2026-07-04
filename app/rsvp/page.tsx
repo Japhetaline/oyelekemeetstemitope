@@ -1,21 +1,15 @@
 'use client'
 import { useState } from 'react'
+import { motion, useReducedMotion } from 'framer-motion'
+import { Reveal, EASE } from '@/components/motion/Reveal'
 
 export default function RSVP() {
+  const reduce = useReducedMotion()
   const [form, setForm] = useState({
     name: '', email: '', phone: '', country: '',
-    events: [] as string[], attendance: '', dietary: '', message: '',
+    attendance: '', dietary: '', message: '',
   })
   const [status, setStatus] = useState<'idle'|'sending'|'done'>('idle')
-
-  const toggle = (event: string) => {
-    setForm(f => ({
-      ...f,
-      events: f.events.includes(event)
-        ? f.events.filter(e => e !== event)
-        : [...f.events, event],
-    }))
-  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -26,15 +20,23 @@ export default function RSVP() {
 
   const inputStyle = {
     width: '100%', padding: '14px 0', background: 'transparent',
-    border: 'none', borderBottom: '0.5px solid rgba(208,138,102,0.4)',
+    border: 'none', borderBottom: '0.5px solid rgba(185,142,76,0.4)',
     color: 'var(--charcoal)', fontSize: '14px', fontFamily: "'Jost', sans-serif",
     outline: 'none', marginBottom: '32px', transition: 'border-color 0.2s',
   }
 
   if (status === 'done') return (
     <div style={{ paddingTop: '64px', minHeight: '100vh', background: 'var(--charcoal)', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '80px 32px' }}>
-      <div>
-        <div style={{ fontSize: '40px', marginBottom: '24px' }}>✦</div>
+      <motion.div
+        initial={reduce ? false : { opacity: 0, y: 24, scale: 0.98 }}
+        animate={reduce ? {} : { opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.9, ease: EASE }}
+      >
+        <motion.div
+          initial={reduce ? false : { opacity: 0, scale: 0.5, rotate: -20 }}
+          animate={reduce ? {} : { opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ duration: 1, delay: 0.2, ease: EASE }}
+          style={{ fontSize: '40px', marginBottom: '24px' }}>✦</motion.div>
         <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(36px, 6vw, 64px)', color: 'var(--cream)', fontStyle: 'italic', marginBottom: '20px' }}>
           You're confirmed!
         </h1>
@@ -45,20 +47,22 @@ export default function RSVP() {
         <div style={{ marginTop: '40px', fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)' }}>
           Oyeleke & Temitope
         </div>
-      </div>
+      </motion.div>
     </div>
   )
 
   return (
     <div style={{ paddingTop: '64px' }}>
-      <section style={{ background: 'var(--charcoal)', padding: '100px 32px', textAlign: 'center' }}>
-        <div style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '20px' }}>✦ RSVP ✦</div>
-        <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(40px, 7vw, 80px)', color: 'var(--cream)', fontStyle: 'italic', fontWeight: 300 }}>
-          Confirm your attendance
-        </h1>
+      <section style={{ background: "linear-gradient(rgba(76,14,26,0.72), rgba(76,14,26,0.84)), url('/assests/wedding%20IV.jpeg') center/cover", padding: '100px 32px', textAlign: 'center' }}>
+        <Reveal>
+          <div style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '20px' }}>✦ RSVP ✦</div>
+          <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(40px, 7vw, 80px)', color: 'var(--cream)', fontStyle: 'italic', fontWeight: 300 }}>
+            Confirm your attendance
+          </h1>
+        </Reveal>
       </section>
 
-      <section style={{ padding: '80px 32px', maxWidth: '640px', margin: '0 auto' }}>
+      <Reveal as="section" style={{ padding: '80px 32px', maxWidth: '640px', margin: '0 auto' }}>
         <form onSubmit={handleSubmit}>
           {/* Name */}
           <div>
@@ -84,27 +88,14 @@ export default function RSVP() {
             <input required value={form.country} onChange={e => setForm({...form, country: e.target.value})} style={inputStyle} placeholder="e.g. United Kingdom" />
           </div>
 
-          {/* Events */}
-          <div style={{ marginBottom: '32px' }}>
-            <label style={{ fontSize: '10px', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--gold)', display: 'block', marginBottom: '16px' }}>Which events are you attending? *</label>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              {['Traditional Engagement (August 2026)', 'Wedding (10 Oct 2026)'].map(ev => (
-                <label key={ev} style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer', fontSize: '14px', color: 'var(--charcoal)' }}>
-                  <input type="checkbox" checked={form.events.includes(ev)} onChange={() => toggle(ev)} style={{ width: '16px', height: '16px', accentColor: 'var(--gold)' }} />
-                  {ev}
-                </label>
-              ))}
-            </div>
-          </div>
-
           {/* Attendance type */}
           <div style={{ marginBottom: '32px' }}>
             <label style={{ fontSize: '10px', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--gold)', display: 'block', marginBottom: '16px' }}>Attendance type *</label>
             <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
               {['In person — Lagos', 'Virtually — Zoom', 'Both (different events)'].map(opt => (
                 <label key={opt} onClick={() => setForm({...form, attendance: opt})} style={{
-                  padding: '10px 20px', border: `0.5px solid ${form.attendance === opt ? 'var(--gold)' : 'rgba(208,138,102,0.3)'}`,
-                  background: form.attendance === opt ? 'rgba(208,138,102,0.08)' : 'transparent',
+                  padding: '10px 20px', border: `0.5px solid ${form.attendance === opt ? 'var(--gold)' : 'rgba(185,142,76,0.3)'}`,
+                  background: form.attendance === opt ? 'rgba(185,142,76,0.08)' : 'transparent',
                   fontSize: '13px', cursor: 'pointer', color: form.attendance === opt ? 'var(--gold)' : 'var(--stone)', transition: 'all 0.2s',
                 }}>
                   {opt}
@@ -135,7 +126,7 @@ export default function RSVP() {
             {status === 'sending' ? 'Sending...' : 'Confirm Attendance'}
           </button>
         </form>
-      </section>
+      </Reveal>
     </div>
   )
 }

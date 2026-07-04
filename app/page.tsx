@@ -1,8 +1,25 @@
 'use client'
 import Link from 'next/link'
+import { motion, useReducedMotion } from 'framer-motion'
 import CountdownTimer from '@/components/CountdownTimer'
+import Slideshow from '@/components/Slideshow'
+import { Reveal, EASE } from '@/components/motion/Reveal'
 
 export default function HomePage() {
+  const reduce = useReducedMotion()
+
+  /* Graceful, staggered hero entrance on page load. */
+  const heroContainer = {
+    hidden: {},
+    show: { transition: { staggerChildren: 0.18, delayChildren: 0.15 } },
+  }
+  const heroItem = reduce
+    ? { hidden: { opacity: 1 }, show: { opacity: 1 } }
+    : {
+        hidden: { opacity: 0, y: 30 },
+        show: { opacity: 1, y: 0, transition: { duration: 1, ease: EASE } },
+      }
+
   return (
     <div>
       {/* HERO */}
@@ -18,59 +35,125 @@ export default function HomePage() {
         position: 'relative',
         overflow: 'hidden',
       }}>
-        {/* Decorative circles */}
-        <div style={{ position: 'absolute', width: '600px', height: '600px', border: '0.5px solid rgba(208,138,102,0.1)', borderRadius: '50%', top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }} />
-        <div style={{ position: 'absolute', width: '800px', height: '800px', border: '0.5px solid rgba(208,138,102,0.06)', borderRadius: '50%', top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }} />
-
-        <div className="fade-up" style={{ fontSize: '11px', letterSpacing: '0.4em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '32px' }}>
-          We are getting married
-        </div>
-
-        <h1 className="fade-up-2" style={{
-          fontFamily: "'Cormorant Garamond', serif",
-          fontSize: 'clamp(52px, 10vw, 100px)',
-          fontWeight: 300,
-          color: 'var(--cream)',
-          lineHeight: 1,
-          marginBottom: '24px',
-          fontStyle: 'italic',
-        }}>
-          Oyeleke<br />
-          <span style={{ color: 'var(--gold)', fontSize: '0.5em', fontStyle: 'normal', letterSpacing: '0.3em', textTransform: 'uppercase', display: 'block', margin: '16px 0' }}>&amp;</span>
-          Temitope
-        </h1>
-
-        <div className="fade-up-3" style={{ fontSize: '12px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--stone-light)', marginBottom: '64px' }}>
-          10 October 2026 · Lagos, Nigeria
-        </div>
-
-        <div className="fade-up-4" style={{ marginBottom: '64px' }}>
-          <CountdownTimer />
-        </div>
-
-        <div className="fade-up-4" style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
-          <Link href="/rsvp" style={{
-            padding: '14px 36px', background: 'var(--gold)', color: 'var(--charcoal)',
-            textDecoration: 'none', fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase',
-            fontWeight: 500, transition: 'opacity 0.2s',
+        {/* Background video — autoplays on load, muted & looping (mobile-safe via playsInline) */}
+        <video
+          autoPlay={!reduce}
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="/assests/laykay01.jpeg"
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            width: '100%',
+            height: '100%',
+            minWidth: '100%',
+            minHeight: '100%',
+            transform: 'translate(-50%, -50%)',
+            objectFit: 'cover',
+            zIndex: 0,
+            pointerEvents: 'none',
           }}
-          onMouseEnter={e => (e.currentTarget.style.opacity = '0.85')}
-          onMouseLeave={e => (e.currentTarget.style.opacity = '1')}>
-            RSVP Now
-          </Link>
-          <Link href="/our-story" style={{
-            padding: '14px 36px', border: '0.5px solid rgba(208,138,102,0.5)', color: 'var(--gold-light)',
-            textDecoration: 'none', fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase',
-            transition: 'border-color 0.2s',
+        >
+          <source src="/assests/laykayVid.mp4" type="video/mp4" />
+        </video>
+
+        {/* Burgundy colour overlay — lifts the text off the footage */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            zIndex: 1,
+            background:
+              'linear-gradient(180deg, rgba(76,14,26,0.78) 0%, rgba(110,21,38,0.66) 45%, rgba(76,14,26,0.86) 100%)',
+          }}
+        />
+        {/* Soft vignette for an editorial, cinematic finish */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            zIndex: 1,
+            background:
+              'radial-gradient(ellipse at center, transparent 38%, rgba(45,8,15,0.55) 100%)',
+          }}
+        />
+
+        {/* Decorative circles — slow, soft scale-in */}
+        <motion.div
+          initial={reduce ? false : { opacity: 0, scale: 0.85 }}
+          animate={reduce ? {} : { opacity: 1, scale: 1 }}
+          transition={{ duration: 1.6, ease: EASE }}
+          style={{ position: 'absolute', zIndex: 2, width: '600px', height: '600px', border: '0.5px solid rgba(224,196,137,0.25)', borderRadius: '50%', top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }}
+        />
+        <motion.div
+          initial={reduce ? false : { opacity: 0, scale: 0.85 }}
+          animate={reduce ? {} : { opacity: 1, scale: 1 }}
+          transition={{ duration: 1.6, delay: 0.15, ease: EASE }}
+          style={{ position: 'absolute', zIndex: 2, width: '800px', height: '800px', border: '0.5px solid rgba(224,196,137,0.14)', borderRadius: '50%', top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }}
+        />
+
+        <motion.div variants={heroContainer} initial="hidden" animate="show" style={{ position: 'relative', zIndex: 3, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <motion.div variants={heroItem} style={{ fontSize: '11px', letterSpacing: '0.4em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '32px' }}>
+            We are getting married
+          </motion.div>
+
+          <motion.h1 variants={heroItem} style={{
+            fontFamily: "'Cormorant Garamond', serif",
+            fontSize: 'clamp(52px, 10vw, 100px)',
+            fontWeight: 300,
+            color: 'var(--cream)',
+            lineHeight: 1,
+            marginBottom: '24px',
+            fontStyle: 'italic',
+            textShadow: '0 2px 24px rgba(45,8,15,0.45)',
           }}>
-            Our Story
-          </Link>
-        </div>
+            Oyeleke<br />
+            <span style={{ color: 'var(--gold)', fontSize: '0.5em', fontStyle: 'normal', letterSpacing: '0.3em', textTransform: 'uppercase', display: 'block', margin: '16px 0' }}>&amp;</span>
+            Temitope
+          </motion.h1>
+
+          <motion.div variants={heroItem} style={{ fontSize: '12px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--stone-light)', marginBottom: '64px' }}>
+            10 October 2026 · Lagos, Nigeria
+          </motion.div>
+
+          <motion.div variants={heroItem} style={{ marginBottom: '64px' }}>
+            <CountdownTimer />
+          </motion.div>
+
+          <motion.div variants={heroItem} style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <motion.div whileHover={reduce ? undefined : { y: -3 }} transition={{ duration: 0.3, ease: EASE }}>
+              <Link href="/rsvp" style={{
+                padding: '14px 36px', background: 'var(--gold)', color: 'var(--charcoal)',
+                textDecoration: 'none', fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase',
+                fontWeight: 500, transition: 'opacity 0.2s', display: 'inline-block',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.opacity = '0.85')}
+              onMouseLeave={e => (e.currentTarget.style.opacity = '1')}>
+                RSVP Now
+              </Link>
+            </motion.div>
+            <motion.div whileHover={reduce ? undefined : { y: -3 }} transition={{ duration: 0.3, ease: EASE }}>
+              <Link href="/our-story" style={{
+                padding: '14px 36px', border: '0.5px solid rgba(185,142,76,0.5)', color: 'var(--gold-light)',
+                textDecoration: 'none', fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase',
+                transition: 'border-color 0.2s', display: 'inline-block',
+              }}>
+                Our Story
+              </Link>
+            </motion.div>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* ABOUT STRIP */}
       <section style={{ background: 'var(--cream-dark)', padding: '80px 32px', textAlign: 'center' }}>
-        <div style={{ maxWidth: '640px', margin: '0 auto' }}>
+        <Reveal style={{ maxWidth: '640px', margin: '0 auto' }}>
           <div style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '24px' }}>
             ✦ Our Celebration ✦
           </div>
@@ -82,46 +165,104 @@ export default function HomePage() {
             Join us from anywhere in the world as we celebrate our love across two unforgettable events.
           </p>
           <div style={{ width: '40px', height: '0.5px', background: 'var(--gold)', margin: '0 auto' }} />
-        </div>
+        </Reveal>
       </section>
 
-      {/* THREE EVENTS */}
+      {/* THE WEDDING */}
       <section style={{ padding: '80px 32px', maxWidth: '1100px', margin: '0 auto' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2px' }}>
-          {[
-            { num: '01', title: 'Traditional Engagement', date: 'August 2026 · Via Zoom', desc: 'Our traditional Nigerian engagement ceremony, celebrated with family across Nigeria and the diaspora.', link: '/engagement' },
-            { num: '02', title: 'Wedding', date: '10 October 2026', desc: 'The main event — a beautiful fusion of culture, faith and love in Lagos, Nigeria.', link: '/events' },
-          ].map((e, i) => (
-            <Link key={i} href={e.link} style={{ textDecoration: 'none', display: 'block', padding: '48px 40px', background: i === 1 ? 'var(--charcoal)' : 'var(--cream-dark)', transition: 'transform 0.3s', border: '0.5px solid transparent' }}
-              onMouseEnter={el => { el.currentTarget.style.transform = 'translateY(-4px)' }}
-              onMouseLeave={el => { el.currentTarget.style.transform = 'translateY(0)' }}>
-              <div style={{ fontSize: '11px', letterSpacing: '0.3em', color: 'var(--gold)', marginBottom: '20px' }}>{e.num}</div>
-              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '28px', color: i === 1 ? 'var(--cream)' : 'var(--charcoal)', marginBottom: '8px', fontStyle: 'italic' }}>{e.title}</h3>
-              <div style={{ fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '20px' }}>{e.date}</div>
-              <p style={{ fontSize: '14px', lineHeight: 1.8, color: i === 1 ? 'var(--stone-light)' : 'var(--stone)' }}>{e.desc}</p>
+        <Reveal>
+          <motion.div whileHover={reduce ? undefined : { y: -6 }} transition={{ duration: 0.4, ease: EASE }}>
+            <Link href="/events" style={{ textDecoration: 'none', display: 'block', padding: '56px 48px', background: 'var(--charcoal)', border: '0.5px solid transparent' }}>
+              <div style={{ fontSize: '11px', letterSpacing: '0.3em', color: 'var(--gold)', marginBottom: '20px' }}>01</div>
+              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '32px', color: 'var(--cream)', marginBottom: '8px', fontStyle: 'italic' }}>Wedding</h3>
+              <div style={{ fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '20px' }}>10 October 2026</div>
+              <p style={{ fontSize: '14px', lineHeight: 1.8, color: 'var(--stone-light)' }}>The main event — a beautiful fusion of culture, faith and love in Lagos, Nigeria.</p>
             </Link>
-          ))}
-        </div>
+          </motion.div>
+        </Reveal>
+      </section>
+
+      {/* SLIDESHOW GALLERY */}
+      <section style={{ background: 'var(--cream-dark)', padding: '80px 32px' }}>
+        <Reveal style={{ textAlign: 'center', marginBottom: '48px' }}>
+          <div style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '20px' }}>
+            ✦ Our Gallery ✦
+          </div>
+          <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(32px, 5vw, 52px)', color: 'var(--charcoal)', fontStyle: 'italic' }}>
+            Moments we treasure
+          </h2>
+        </Reveal>
+        <Reveal>
+          <Slideshow />
+        </Reveal>
+      </section>
+
+      {/* MAP & DIRECTIONS */}
+      <section style={{ padding: '80px 32px', maxWidth: '1100px', margin: '0 auto' }}>
+        <Reveal style={{ textAlign: 'center', marginBottom: '48px' }}>
+          <div style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '20px' }}>
+            ✦ Find Your Way ✦
+          </div>
+          <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(32px, 5vw, 52px)', color: 'var(--charcoal)', fontStyle: 'italic', marginBottom: '12px' }}>
+            DLK Event Centre
+          </h2>
+          <p style={{ fontSize: '14px', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--stone)' }}>
+            M.K.O Abiola Way · Abeokuta, Ogun State
+          </p>
+        </Reveal>
+        <Reveal>
+          <div style={{ position: 'relative', width: '100%', aspectRatio: '16 / 9', overflow: 'hidden', border: '0.5px solid rgba(185,142,76,0.3)' }}>
+            <iframe
+              title="Map to DLK Event Centre, M.K.O Abiola Way, Abeokuta"
+              src="https://maps.google.com/maps?q=DLK%20Event%20Centre%20M.K.O%20Abiola%20Way%20Abeokuta%20Ogun%20State&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0 }}
+            />
+          </div>
+        </Reveal>
+        <Reveal style={{ textAlign: 'center', marginTop: '32px' }}>
+          <motion.div whileHover={reduce ? undefined : { y: -3 }} transition={{ duration: 0.3, ease: EASE }} style={{ display: 'inline-block' }}>
+            <a
+              href="https://www.google.com/maps/dir/?api=1&destination=DLK+Event+Centre+M.K.O+Abiola+Way+Abeokuta+Ogun+State"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                padding: '14px 36px', background: 'var(--gold)', color: 'var(--charcoal)',
+                textDecoration: 'none', fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase',
+                fontWeight: 500, display: 'inline-block',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.opacity = '0.85')}
+              onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
+            >
+              Get Directions
+            </a>
+          </motion.div>
+        </Reveal>
       </section>
 
       {/* CTA STRIP */}
       <section style={{ background: 'var(--charcoal)', padding: '80px 32px', textAlign: 'center' }}>
-        <div style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '20px' }}>
-          ✦ You are invited ✦
-        </div>
-        <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(36px, 6vw, 64px)', color: 'var(--cream)', marginBottom: '32px', fontStyle: 'italic' }}>
-          Will you join us?
-        </h2>
-        <Link href="/rsvp" style={{
-          padding: '16px 48px', background: 'transparent', border: '0.5px solid var(--gold)',
-          color: 'var(--gold)', textDecoration: 'none', fontSize: '11px',
-          letterSpacing: '0.25em', textTransform: 'uppercase', display: 'inline-block',
-          transition: 'all 0.3s',
-        }}
-        onMouseEnter={e => { e.currentTarget.style.background = 'var(--gold)'; e.currentTarget.style.color = 'var(--charcoal)' }}
-        onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--gold)' }}>
-          Confirm Attendance
-        </Link>
+        <Reveal>
+          <div style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '20px' }}>
+            ✦ You are invited ✦
+          </div>
+          <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(36px, 6vw, 64px)', color: 'var(--cream)', marginBottom: '32px', fontStyle: 'italic' }}>
+            Will you join us?
+          </h2>
+          <motion.div whileHover={reduce ? undefined : { y: -3 }} transition={{ duration: 0.3, ease: EASE }} style={{ display: 'inline-block' }}>
+            <Link href="/rsvp" style={{
+              padding: '16px 48px', background: 'transparent', border: '0.5px solid var(--gold)',
+              color: 'var(--gold)', textDecoration: 'none', fontSize: '11px',
+              letterSpacing: '0.25em', textTransform: 'uppercase', display: 'inline-block',
+              transition: 'all 0.3s',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'var(--gold)'; e.currentTarget.style.color = 'var(--charcoal)' }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--gold)' }}>
+              Confirm Attendance
+            </Link>
+          </motion.div>
+        </Reveal>
       </section>
     </div>
   )

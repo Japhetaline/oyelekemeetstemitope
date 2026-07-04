@@ -5,23 +5,25 @@
 @tailwind utilities;
 
 :root {
-  /* Wedding palette — wine, white & peach.
-     Variable names are kept for compatibility; values map to the new scheme:
-     --gold* = peach accents · --charcoal = deep wine · --cream* = white/peach tints */
-  --gold: #D08A66;        /* peach accent */
-  --gold-light: #F0C3A6;  /* light peach */
-  --gold-dark: #A85F3E;   /* deep terracotta-peach */
-  --cream: #FCF7F4;       /* warm white */
-  --cream-dark: #F8E7DC;  /* soft peach tint */
-  --charcoal: #5C2233;    /* deep wine */
-  --stone: #8A636C;       /* muted mauve (wine-tinted) */
-  --stone-light: #C7A8AE; /* light mauve */
+  /* Wedding palette — drawn from the "Save the Date" invitation:
+     deep burgundy · ivory cream · metallic gold (with rose & green florals).
+     Variable names are kept for compatibility:
+     --gold* = metallic gold accents · --charcoal = deep burgundy · --cream* = ivory tints */
+  --gold: #B98E4C;        /* metallic gold accent */
+  --gold-light: #E0C489;  /* light champagne gold */
+  --gold-dark: #8F6B33;   /* deep antique gold */
+  --cream: #F6EDE3;       /* warm ivory */
+  --cream-dark: #EFE1D2;  /* soft ivory tint */
+  --charcoal: #6E1526;    /* deep burgundy */
+  --stone: #8A5560;       /* muted mauve (burgundy-tinted) */
+  --stone-light: #CBA9AF; /* light rose mauve */
 
-  /* Semantic aliases for the three wedding colours */
-  --wine: #5C2233;
-  --wine-deep: #431824;
+  /* Semantic aliases for the wedding colours */
+  --wine: #6E1526;
+  --wine-deep: #4C0E1A;
   --white: #FFFFFF;
-  --peach: #F4C2A1;
+  --rose: #C98B86;        /* dusty rose from the florals */
+  --leaf: #5A6233;        /* muted olive-green foliage */
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -50,3 +52,27 @@ h1,h2,h3,h4 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 40
   50%      { opacity: 1; }
 }
 .shimmer { animation: shimmer 3s ease-in-out infinite; }
+
+/* Navbar responsive — mobile shows only the O&T logo + hamburger (all links
+   live inside the hamburger menu); desktop (>=768px) shows the full nav. */
+.nav-desktop-links { display: none; }
+.nav-rsvp { display: none; }
+.nav-hamburger { display: flex; flex-direction: column; }
+.nav-logo { font-size: 30px; }
+@media (min-width: 768px) {
+  .nav-desktop-links { display: flex; }
+  .nav-rsvp { display: inline-block; }
+  .nav-hamburger { display: none; }
+  .nav-logo { font-size: 20px; }
+}
+
+/* Accessibility — honour reduced-motion for CSS animations and smooth scroll.
+   (Framer Motion components honour it separately via useReducedMotion.) */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
