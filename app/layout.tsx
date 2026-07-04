@@ -6,6 +6,9 @@ import Footer from '@/components/Footer'
 export const metadata: Metadata = {
   title: 'Oyeleke & Temitope — October 2026',
   description: 'Join us as we celebrate our love',
+  icons: {
+    icon: [{ url: '/assests/wedding-favicon.png', type: 'image/png' }],
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

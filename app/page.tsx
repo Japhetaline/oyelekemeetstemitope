@@ -119,7 +119,7 @@ export default function HomePage() {
           </motion.h1>
 
           <motion.div variants={heroItem} style={{ fontSize: '12px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--stone-light)', marginBottom: '64px' }}>
-            10 October 2026 · Lagos, Nigeria
+            10 October 2026 · Ogun, Nigeria
           </motion.div>
 
           <motion.div variants={heroItem} style={{ marginBottom: '64px' }}>

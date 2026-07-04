@@ -7,9 +7,9 @@ export default function Events() {
     {
       num: '01',
       title: 'Traditional Engagement',
-      date: 'October 2026',
+      date: '10 October 2026',
       time: '12:00 PM WAT · 11:00 AM BST · 7:00 AM EST',
-      location: 'Lagos, Nigeria + Zoom',
+      location: 'Ogun, Nigeria + Zoom',
       type: 'Hybrid (In Person + Virtual)',
       color: 'var(--charcoal)',
       textColor: 'var(--cream)',

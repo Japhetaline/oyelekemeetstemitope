@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { EASE } from '@/components/motion/Reveal'
 
-/* All gallery images from public/assests (encodeURI handles the space in "wedding IV"). */
+/* The eight photoshoot images from public/assests. */
 const IMAGES = [
   '/assests/laykay01.jpeg',
   '/assests/laykay02.jpeg',
