@@ -42,7 +42,7 @@ export default function GalleryGrid({ images }: { images: GalleryImage[] }) {
     <>
       {/* Upload section */}
       <section style={{ background: 'var(--gold)', padding: '40px 32px', textAlign: 'center' }}>
-        <div style={{ fontSize: '12px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(110,21,38,0.65)', marginBottom: '12px' }}>
+        <div style={{ fontSize: '12px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(52,84,60,0.65)', marginBottom: '12px' }}>
           Attended one of our events?
         </div>
         <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '28px', color: 'var(--charcoal)', fontStyle: 'italic', marginBottom: '20px' }}>
@@ -59,7 +59,7 @@ export default function GalleryGrid({ images }: { images: GalleryImage[] }) {
             {error && <div style={{ fontSize: '13px', color: 'var(--charcoal)', marginTop: '12px' }}>{error}</div>}
           </>
         ) : (
-          <div style={{ fontSize: '13px', color: 'rgba(110,21,38,0.75)' }}>Photo sharing opens closer to the wedding.</div>
+          <div style={{ fontSize: '13px', color: 'rgba(52,84,60,0.75)' }}>Photo sharing opens closer to the wedding.</div>
         )}
       </section>
 
@@ -83,7 +83,7 @@ export default function GalleryGrid({ images }: { images: GalleryImage[] }) {
                   marginBottom: '4px',
                   breakInside: 'avoid',
                   overflow: 'hidden',
-                  border: '0.5px solid rgba(185,142,76,0.2)',
+                  border: '0.5px solid rgba(222,154,110,0.2)',
                   cursor: 'pointer',
                   lineHeight: 0,
                 }}

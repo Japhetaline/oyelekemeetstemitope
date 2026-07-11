@@ -4,11 +4,11 @@ import { Reveal, Stagger, StaggerItem, EASE } from '@/components/motion/Reveal'
 
 export default function OurStory() {
   const timeline = [
-    { year: '2019', title: 'First Meeting', desc: 'Two Nigerians abroad, introduced through mutual friends at a cultural event in London. Neither of us planned to stay long — but destiny had other ideas.' },
-    { year: '2020', title: 'Friendship Deepens', desc: 'Through lockdowns and long calls, we discovered our shared love for Afrobeats, jollof debates, and dreaming about home.' },
-    { year: '2022', title: 'Something More', desc: 'A trip to Lagos together. Walking through familiar streets with new eyes. That is when we both knew this was something rare.' },
-    { year: '2024', title: 'The Proposal', desc: 'On a quiet evening, with the Atlantic in view, Oyeleke got down on one knee. Temitope said yes before he finished the sentence.' },
-    { year: '2026', title: 'Forever', desc: 'May our families meet, our traditions be honoured, and our love be celebrated — in Nigeria and beyond.' },
+    { title: 'First Meeting', desc: 'Two Nigerians abroad, introduced through mutual friends at a cultural event in London. Neither of us planned to stay long — but destiny had other ideas.' },
+    { title: 'Friendship Deepens', desc: 'Through lockdowns and long calls, we discovered our shared love for Afrobeats, jollof debates, and dreaming about home.' },
+    { title: 'Something More', desc: 'A trip to Lagos together. Walking through familiar streets with new eyes. That is when we both knew this was something rare.' },
+    { title: 'The Proposal', desc: 'On a quiet evening, with the Atlantic in view, Oyeleke got down on one knee. Temitope said yes before he finished the sentence.' },
+    { title: 'Forever', desc: 'May our families meet, our traditions be honoured, and our love be celebrated — in Nigeria and beyond.' },
   ]
 
   const reduce = useReducedMotion()
@@ -16,7 +16,7 @@ export default function OurStory() {
   return (
     <div style={{ paddingTop: '64px' }}>
       {/* Hero */}
-      <section style={{ background: "linear-gradient(rgba(76,14,26,0.72), rgba(76,14,26,0.84)), url('/assests/laykay02.jpeg') center/cover", padding: '100px 32px', textAlign: 'center' }}>
+      <section style={{ background: "linear-gradient(rgba(30,54,38,0.72), rgba(30,54,38,0.84)), url('/assests/laykay02.jpeg') center/cover", padding: '100px 32px', textAlign: 'center' }}>
         <Reveal>
           <div style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '20px' }}>
             ✦ Our Story ✦
@@ -41,10 +41,9 @@ export default function OurStory() {
       {/* Timeline */}
       <Stagger as="section" style={{ padding: '40px 32px 100px', maxWidth: '800px', margin: '0 auto' }}>
         {timeline.map((item, i) => (
-          <StaggerItem key={i} style={{ display: 'flex', gap: '32px', marginBottom: '60px', alignItems: 'flex-start' }}>
-            <div style={{ flexShrink: 0, textAlign: 'right', width: '60px' }}>
-              <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '22px', color: 'var(--gold)', fontStyle: 'italic' }}>{item.year}</div>
-              <div style={{ width: '0.5px', height: '60px', background: 'var(--gold)', opacity: 0.3, margin: '8px auto 0', marginLeft: 'auto' }} />
+          <StaggerItem key={i} style={{ display: 'flex', gap: '24px', marginBottom: '48px', alignItems: 'flex-start' }}>
+            <div style={{ flexShrink: 0, paddingTop: '14px' }}>
+              <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--gold)' }} />
             </div>
             <div style={{ paddingTop: '4px' }}>
               <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '26px', color: 'var(--charcoal)', marginBottom: '12px' }}>{item.title}</h3>
@@ -60,15 +59,15 @@ export default function OurStory() {
           <Stagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '24px' }}>
             {['Oyeleke', 'Temitope'].map(name => (
               <StaggerItem key={name}>
-              <motion.div whileHover={reduce ? undefined : { y: -6 }} transition={{ duration: 0.4, ease: EASE }} style={{ background: 'var(--cream-dark)', border: '0.5px solid rgba(185,142,76,0.3)', padding: '48px 32px', textAlign: 'center', height: '100%' }}>
-                <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: 'rgba(185,142,76,0.15)', border: '0.5px solid var(--gold)', margin: '0 auto 24px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '28px', fontFamily: "'Cormorant Garamond', serif", color: 'var(--gold)' }}>
+              <motion.div whileHover={reduce ? undefined : { y: -6 }} transition={{ duration: 0.4, ease: EASE }} style={{ background: 'var(--cream-dark)', border: '0.5px solid rgba(222,154,110,0.3)', padding: '48px 32px', textAlign: 'center', height: '100%' }}>
+                <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: 'rgba(222,154,110,0.15)', border: '0.5px solid var(--gold)', margin: '0 auto 24px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '28px', fontFamily: "'Cormorant Garamond', serif", color: 'var(--gold)' }}>
                   {name[0]}
                 </div>
                 <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '28px', fontStyle: 'italic', color: 'var(--charcoal)', marginBottom: '12px' }}>{name}</h3>
                 <p style={{ fontSize: '13px', lineHeight: 1.8, color: 'var(--stone)' }}>
                   {name === 'Temitope'
-                    ? 'A Lagos girl with a London life. Loves suya, Fela Kuti, and long conversations that go into the early hours.'
-                    : 'Ogun State-born, world-travelled. Passionate about family, good food, and making Temitope laugh every single day.'}
+                    ? 'Abeokuta born, bred and lived in Abuja and Ogun State before relocating abroad. She loves travelling and having fun, Sheyi vibes, and living happily ever after with Oyeleke.'
+                    : 'Ibadan born, bred and lived in Ogun and Lagos before relocating abroad to chase his dreams. Passionate about family and career, and about making Temitope and everyone around him happy, always.'}
                 </p>
               </motion.div>
               </StaggerItem>

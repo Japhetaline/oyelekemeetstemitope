@@ -61,7 +61,7 @@ export default function HomePage() {
           <source src="/assests/laykayVid.mp4" type="video/mp4" />
         </video>
 
-        {/* Burgundy colour overlay — lifts the text off the footage */}
+        {/* Deep-green colour overlay — lifts the text off the footage */}
         <div
           aria-hidden="true"
           style={{
@@ -69,7 +69,7 @@ export default function HomePage() {
             inset: 0,
             zIndex: 1,
             background:
-              'linear-gradient(180deg, rgba(76,14,26,0.78) 0%, rgba(110,21,38,0.66) 45%, rgba(76,14,26,0.86) 100%)',
+              'linear-gradient(180deg, rgba(30,54,38,0.78) 0%, rgba(52,84,60,0.66) 45%, rgba(30,54,38,0.86) 100%)',
           }}
         />
         {/* Soft vignette for an editorial, cinematic finish */}
@@ -80,7 +80,7 @@ export default function HomePage() {
             inset: 0,
             zIndex: 1,
             background:
-              'radial-gradient(ellipse at center, transparent 38%, rgba(45,8,15,0.55) 100%)',
+              'radial-gradient(ellipse at center, transparent 38%, rgba(16,34,22,0.55) 100%)',
           }}
         />
 
@@ -89,13 +89,13 @@ export default function HomePage() {
           initial={reduce ? false : { opacity: 0, scale: 0.85 }}
           animate={reduce ? {} : { opacity: 1, scale: 1 }}
           transition={{ duration: 1.6, ease: EASE }}
-          style={{ position: 'absolute', zIndex: 2, width: '600px', height: '600px', border: '0.5px solid rgba(224,196,137,0.25)', borderRadius: '50%', top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }}
+          style={{ position: 'absolute', zIndex: 2, width: '600px', height: '600px', border: '0.5px solid rgba(243,198,163,0.25)', borderRadius: '50%', top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }}
         />
         <motion.div
           initial={reduce ? false : { opacity: 0, scale: 0.85 }}
           animate={reduce ? {} : { opacity: 1, scale: 1 }}
           transition={{ duration: 1.6, delay: 0.15, ease: EASE }}
-          style={{ position: 'absolute', zIndex: 2, width: '800px', height: '800px', border: '0.5px solid rgba(224,196,137,0.14)', borderRadius: '50%', top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }}
+          style={{ position: 'absolute', zIndex: 2, width: '800px', height: '800px', border: '0.5px solid rgba(243,198,163,0.14)', borderRadius: '50%', top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }}
         />
 
         <motion.div variants={heroContainer} initial="hidden" animate="show" style={{ position: 'relative', zIndex: 3, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -111,7 +111,7 @@ export default function HomePage() {
             lineHeight: 1,
             marginBottom: '24px',
             fontStyle: 'italic',
-            textShadow: '0 2px 24px rgba(45,8,15,0.45)',
+            textShadow: '0 2px 24px rgba(16,34,22,0.45)',
           }}>
             Oyeleke<br />
             <span style={{ color: 'var(--gold)', fontSize: '0.5em', fontStyle: 'normal', letterSpacing: '0.3em', textTransform: 'uppercase', display: 'block', margin: '16px 0' }}>&amp;</span>
@@ -140,7 +140,7 @@ export default function HomePage() {
             </motion.div>
             <motion.div whileHover={reduce ? undefined : { y: -3 }} transition={{ duration: 0.3, ease: EASE }}>
               <Link href="/our-story" style={{
-                padding: '14px 36px', border: '0.5px solid rgba(185,142,76,0.5)', color: 'var(--gold-light)',
+                padding: '14px 36px', border: '0.5px solid rgba(222,154,110,0.5)', color: 'var(--gold-light)',
                 textDecoration: 'none', fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase',
                 transition: 'border-color 0.2s', display: 'inline-block',
               }}>
@@ -211,7 +211,7 @@ export default function HomePage() {
           </p>
         </Reveal>
         <Reveal>
-          <div style={{ position: 'relative', width: '100%', aspectRatio: '16 / 9', overflow: 'hidden', border: '0.5px solid rgba(185,142,76,0.3)' }}>
+          <div style={{ position: 'relative', width: '100%', aspectRatio: '16 / 9', overflow: 'hidden', border: '0.5px solid rgba(222,154,110,0.3)' }}>
             <iframe
               title="Map to DLK Event Centre, M.K.O Abiola Way, Abeokuta"
               src="https://maps.google.com/maps?q=DLK%20Event%20Centre%20M.K.O%20Abiola%20Way%20Abeokuta%20Ogun%20State&t=&z=15&ie=UTF8&iwloc=&output=embed"

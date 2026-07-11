@@ -8,7 +8,7 @@ export default function Events() {
       num: '01',
       title: 'Traditional Engagement',
       date: '10 October 2026',
-      time: '12:00 PM WAT · 11:00 AM BST · 7:00 AM EST',
+      time: '1:00 PM – 3:30 PM WAT',
       location: 'Ogun, Nigeria + Zoom',
       type: 'Hybrid (In Person + Virtual)',
       color: 'var(--charcoal)',
@@ -21,33 +21,33 @@ export default function Events() {
       num: '02',
       title: 'Wedding Nikah',
       date: '10 October 2026',
-      time: '12:00 PM WAT',
+      time: '11:00 AM – 1:00 PM WAT',
       location: 'DLK Event Centre, Abeokuta',
       type: 'In Person + Livestream',
       color: 'var(--charcoal)',
       textColor: 'var(--cream)',
       dark: true,
-      desc: 'The main event. Our Nikah — a sacred Islamic marriage ceremony — followed by a Walimah reception filled with prayer, music, dancing, Nigerian cuisine, and love. We cannot wait to celebrate with you.',
-      details: ['Nikah ceremony 12:00 PM', 'Walimah reception from 3:00 PM', 'Celebration from 9:00 PM', 'Aso-ebi in burgundy, ivory & gold'],
+      desc: 'The main event. Our Nikah — a sacred Islamic marriage ceremony — followed by the traditional wedding and a reception filled with prayer, music, dancing, Nigerian cuisine, and love. We cannot wait to celebrate with you.',
+      details: ['Nikah ceremony 11:00 AM – 1:00 PM', 'Traditional wedding 1:00 PM – 3:30 PM', 'Reception immediately after the traditional', 'Aso-ebi in peach, white & green'],
     },
   ]
 
   const programme = [
-    { time: '12:00 PM', item: 'Welcome & opening prayers' },
-    { time: '12:20 PM', item: 'Introduction of both families' },
-    { time: '12:45 PM', item: 'Presentation of traditional items' },
-    { time: '1:15 PM', item: 'Bride price negotiation (symbolic)' },
-    { time: '1:45 PM', item: 'Palm wine ceremony' },
-    { time: '2:00 PM', item: 'Kola nut blessing by elders' },
-    { time: '2:20 PM', item: 'Exchange of gifts and goodwill' },
-    { time: '2:45 PM', item: 'Closing prayers & celebration' },
+    { time: '1:00 PM', item: 'Welcome & opening prayers' },
+    { time: '1:20 PM', item: 'Introduction of both families' },
+    { time: '1:40 PM', item: 'Presentation of traditional items' },
+    { time: '2:00 PM', item: 'Bride price negotiation (symbolic)' },
+    { time: '2:20 PM', item: 'Palm wine ceremony' },
+    { time: '2:40 PM', item: 'Kola nut blessing by elders' },
+    { time: '3:00 PM', item: 'Exchange of gifts and goodwill' },
+    { time: '3:20 PM', item: 'Closing prayers & celebration' },
   ]
 
   const reduce = useReducedMotion()
 
   return (
     <div style={{ paddingTop: '64px' }}>
-      <section style={{ background: "linear-gradient(rgba(76,14,26,0.72), rgba(76,14,26,0.84)), url('/assests/laykay03.jpeg') center/cover", padding: '100px 32px', textAlign: 'center' }}>
+      <section style={{ background: "linear-gradient(rgba(30,54,38,0.72), rgba(30,54,38,0.84)), url('/assests/laykay03.jpeg') center/cover", padding: '100px 32px', textAlign: 'center' }}>
         <Reveal>
           <div style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '20px' }}>✦ Events ✦</div>
           <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(40px, 7vw, 80px)', color: 'var(--cream)', fontStyle: 'italic', fontWeight: 300 }}>
@@ -63,13 +63,13 @@ export default function Events() {
             background: ev.color, padding: '56px 48px',
             marginBottom: '2px', position: 'relative',
           }}>
-            <div style={{ fontSize: '11px', letterSpacing: '0.3em', color: ev.color === 'var(--gold)' ? 'rgba(110,21,38,0.6)' : 'var(--gold)', marginBottom: '16px' }}>{ev.num}</div>
+            <div style={{ fontSize: '11px', letterSpacing: '0.3em', color: ev.color === 'var(--gold)' ? 'rgba(52,84,60,0.6)' : 'var(--gold)', marginBottom: '16px' }}>{ev.num}</div>
             <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(28px, 4vw, 42px)', color: ev.textColor, fontStyle: 'italic', marginBottom: '12px' }}>
               {ev.title}
             </h2>
             <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', marginBottom: '24px' }}>
               {[ev.date, ev.location, ev.type].map((tag, j) => (
-                <span key={j} style={{ fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', padding: '4px 12px', border: `0.5px solid ${ev.dark ? 'rgba(185,142,76,0.4)' : 'rgba(110,21,38,0.25)'}`, color: ev.dark ? 'var(--gold)' : 'var(--stone)' }}>
+                <span key={j} style={{ fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', padding: '4px 12px', border: `0.5px solid ${ev.dark ? 'rgba(222,154,110,0.4)' : 'rgba(52,84,60,0.25)'}`, color: ev.dark ? 'var(--gold)' : 'var(--stone)' }}>
                   {tag}
                 </span>
               ))}
@@ -113,7 +113,7 @@ export default function Events() {
                   alignItems: 'baseline',
                   gap: '24px',
                   padding: '20px 8px',
-                  borderBottom: i === programme.length - 1 ? 'none' : '0.5px solid rgba(110,21,38,0.15)',
+                  borderBottom: i === programme.length - 1 ? 'none' : '0.5px solid rgba(52,84,60,0.15)',
                 }}
               >
                 <div style={{ fontSize: '13px', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold-dark)', fontWeight: 500 }}>

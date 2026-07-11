@@ -30,7 +30,7 @@ export default function Footer() {
           Oyeleke &amp; Temitope
         </motion.div>
         <div style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--stone-light)', marginBottom: '40px' }}>
-          10 October 2026 · Lagos, Nigeria
+          10 October 2026 · Abeokuta, Nigeria
         </div>
       </Reveal>
 

@@ -5,25 +5,27 @@
 @tailwind utilities;
 
 :root {
-  /* Wedding palette — drawn from the "Save the Date" invitation:
-     deep burgundy · ivory cream · metallic gold (with rose & green florals).
-     Variable names are kept for compatibility:
-     --gold* = metallic gold accents · --charcoal = deep burgundy · --cream* = ivory tints */
-  --gold: #B98E4C;        /* metallic gold accent */
-  --gold-light: #E0C489;  /* light champagne gold */
-  --gold-dark: #8F6B33;   /* deep antique gold */
-  --cream: #F6EDE3;       /* warm ivory */
-  --cream-dark: #EFE1D2;  /* soft ivory tint */
-  --charcoal: #6E1526;    /* deep burgundy */
-  --stone: #8A5560;       /* muted mauve (burgundy-tinted) */
-  --stone-light: #CBA9AF; /* light rose mauve */
+  /* Wedding palette — colour of the day: PEACH · WHITE · GREEN.
+     Variable names are kept for compatibility with the rest of the site:
+     --gold*     = peach accents
+     --charcoal  = deep green (dark backgrounds)
+     --cream*    = soft whites
+     --stone*    = muted sage / warm light text */
+  --gold: #DE9A6E;        /* peach accent */
+  --gold-light: #F3C6A3;  /* light peach */
+  --gold-dark: #B47044;   /* deep peach / terracotta */
+  --cream: #FBF7F2;       /* soft white */
+  --cream-dark: #F5ECE1;  /* warm off-white tint */
+  --charcoal: #2C4A37;    /* deep green */
+  --stone: #6E7A5E;       /* muted sage (green-tinted) */
+  --stone-light: #DCCEBB; /* warm light (reads on deep green) */
 
   /* Semantic aliases for the wedding colours */
-  --wine: #6E1526;
-  --wine-deep: #4C0E1A;
+  --wine: #2C4A37;        /* deep green (was burgundy) */
+  --wine-deep: #17301F;   /* darker green */
   --white: #FFFFFF;
-  --rose: #C98B86;        /* dusty rose from the florals */
-  --leaf: #5A6233;        /* muted olive-green foliage */
+  --rose: #E7A986;        /* dusty peach */
+  --leaf: #5E7A55;        /* fresh green foliage */
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }

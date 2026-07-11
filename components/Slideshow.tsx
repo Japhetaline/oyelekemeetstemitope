@@ -40,7 +40,7 @@ export default function Slideshow() {
           aspectRatio: '3 / 2',
           overflow: 'hidden',
           background: 'var(--charcoal)',
-          border: '0.5px solid rgba(185,142,76,0.3)',
+          border: '0.5px solid rgba(222,154,110,0.3)',
         }}
       >
         <AnimatePresence mode="popLayout" initial={false}>
@@ -67,8 +67,8 @@ export default function Slideshow() {
           onClick={() => go(-1)}
           aria-label="Previous photo"
           style={arrowStyle('left')}
-          onMouseEnter={e => (e.currentTarget.style.background = 'rgba(45,8,15,0.85)')}
-          onMouseLeave={e => (e.currentTarget.style.background = 'rgba(45,8,15,0.55)')}
+          onMouseEnter={e => (e.currentTarget.style.background = 'rgba(16,34,22,0.85)')}
+          onMouseLeave={e => (e.currentTarget.style.background = 'rgba(16,34,22,0.55)')}
         >
           ‹
         </button>
@@ -76,8 +76,8 @@ export default function Slideshow() {
           onClick={() => go(1)}
           aria-label="Next photo"
           style={arrowStyle('right')}
-          onMouseEnter={e => (e.currentTarget.style.background = 'rgba(45,8,15,0.85)')}
-          onMouseLeave={e => (e.currentTarget.style.background = 'rgba(45,8,15,0.55)')}
+          onMouseEnter={e => (e.currentTarget.style.background = 'rgba(16,34,22,0.85)')}
+          onMouseLeave={e => (e.currentTarget.style.background = 'rgba(16,34,22,0.55)')}
         >
           ›
         </button>
@@ -97,7 +97,7 @@ export default function Slideshow() {
               border: 'none',
               padding: 0,
               cursor: 'pointer',
-              background: i === index ? 'var(--gold)' : 'rgba(185,142,76,0.35)',
+              background: i === index ? 'var(--gold)' : 'rgba(222,154,110,0.35)',
               transition: 'width 0.3s ease, background 0.3s ease',
             }}
           />
@@ -117,8 +117,8 @@ function arrowStyle(side: 'left' | 'right'): React.CSSProperties {
     width: '44px',
     height: '44px',
     borderRadius: '50%',
-    border: '0.5px solid rgba(224,196,137,0.5)',
-    background: 'rgba(45,8,15,0.55)',
+    border: '0.5px solid rgba(243,198,163,0.5)',
+    background: 'rgba(16,34,22,0.55)',
     color: 'var(--cream)',
     fontSize: '24px',
     lineHeight: 1,

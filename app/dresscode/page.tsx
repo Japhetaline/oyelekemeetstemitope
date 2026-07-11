@@ -7,16 +7,16 @@ export default function DressCode() {
     {
       event: 'Traditional Engagement',
       code: 'Full Traditional Attire',
-      palette: 'Rich colours — burgundy, rose, green & gold',
+      palette: 'Colours of the day — peach, white & green',
       details: ['Igbo or Yoruba traditional wear encouraged', 'George wrapper for women', 'Agbada, senator or native for men', 'Aso-ebi fabric available — see details below'],
-      colors: ['#6E1526', '#C98B86', '#5A6233', '#B98E4C'],
+      colors: ['#5E7A55', '#DE9A6E', '#F3C6A3', '#FBF7F2'],
     },
     {
       event: 'Wedding Day',
       code: 'Black Tie + Aso-ebi',
-      palette: 'Our colours — burgundy, ivory & gold',
-      details: ['Aso-ebi: burgundy George + gold lace', 'If not wearing aso-ebi: black tie or traditional', 'Ladies: full length gown in burgundy, ivory or gold', 'Gentlemen: suit and tie or agbada'],
-      colors: ['#6E1526', '#F6EDE3', '#C98B86', '#B98E4C'],
+      palette: 'Colours of the day — peach, white & green',
+      details: ['Aso-ebi: green George + peach lace', 'If not wearing aso-ebi: black tie or traditional', 'Ladies: full length gown in peach, white or green', 'Gentlemen: suit and tie or agbada'],
+      colors: ['#2C4A37', '#FBF7F2', '#E7A986', '#5E7A55'],
     },
   ]
 
@@ -24,7 +24,7 @@ export default function DressCode() {
 
   return (
     <div style={{ paddingTop: '64px' }}>
-      <section style={{ background: "linear-gradient(rgba(76,14,26,0.72), rgba(76,14,26,0.84)), url('/assests/laykay05.jpeg') center/cover", padding: '100px 32px', textAlign: 'center' }}>
+      <section style={{ background: "linear-gradient(rgba(30,54,38,0.72), rgba(30,54,38,0.84)), url('/assests/laykay05.jpeg') center/cover", padding: '100px 32px', textAlign: 'center' }}>
         <Reveal>
           <div style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '20px' }}>✦ Dress Code ✦</div>
           <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(40px, 7vw, 80px)', color: 'var(--cream)', fontStyle: 'italic', fontWeight: 300 }}>
@@ -65,15 +65,15 @@ export default function DressCode() {
         <Reveal>
           <div style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '20px' }}>Aso-ebi Details</div>
           <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(28px, 5vw, 48px)', color: 'var(--cream)', fontStyle: 'italic', marginBottom: '24px' }}>
-            Burgundy George + Gold Lace
+            Green George + Peach Lace
           </h2>
           <p style={{ fontSize: '14px', color: 'var(--stone-light)', maxWidth: '560px', margin: '0 auto 32px', lineHeight: 1.8 }}>
-            Aso-ebi fabric packs are available for order. Each pack includes a burgundy George wrapper and champagne-gold French lace. Orders close 8 weeks before the wedding.
+            Aso-ebi fabric packs are available for order. Each pack includes a green George wrapper and soft peach French lace. Orders close 8 weeks before the wedding.
           </p>
         </Reveal>
         <Stagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '16px', maxWidth: '600px', margin: '0 auto', textAlign: 'left' }}>
           {[['Fabric pack price', '₦35,000 / £50'], ['Order deadline', '15 August 2026'], ['Collection', 'Lagos or posted abroad'], ['Contact', 'aso-ebi@oyelekeandtemitope.com']].map(([label, val], i) => (
-            <StaggerItem key={i} style={{ padding: '20px', border: '0.5px solid rgba(185,142,76,0.3)' }}>
+            <StaggerItem key={i} style={{ padding: '20px', border: '0.5px solid rgba(222,154,110,0.3)' }}>
               <div style={{ fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '6px' }}>{label}</div>
               <div style={{ fontSize: '14px', color: 'var(--cream)' }}>{val}</div>
             </StaggerItem>

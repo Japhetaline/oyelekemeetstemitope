@@ -20,7 +20,7 @@ export default function RSVP() {
 
   const inputStyle = {
     width: '100%', padding: '14px 0', background: 'transparent',
-    border: 'none', borderBottom: '0.5px solid rgba(185,142,76,0.4)',
+    border: 'none', borderBottom: '0.5px solid rgba(222,154,110,0.4)',
     color: 'var(--charcoal)', fontSize: '14px', fontFamily: "'Jost', sans-serif",
     outline: 'none', marginBottom: '32px', transition: 'border-color 0.2s',
   }
@@ -53,7 +53,7 @@ export default function RSVP() {
 
   return (
     <div style={{ paddingTop: '64px' }}>
-      <section style={{ background: "linear-gradient(rgba(76,14,26,0.72), rgba(76,14,26,0.84)), url('/assests/wedding%20IV.jpeg') center/cover", padding: '100px 32px', textAlign: 'center' }}>
+      <section style={{ background: "linear-gradient(rgba(30,54,38,0.72), rgba(30,54,38,0.84)), url('/assests/wedding%20IV.jpeg') center/cover", padding: '100px 32px', textAlign: 'center' }}>
         <Reveal>
           <div style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '20px' }}>✦ RSVP ✦</div>
           <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(40px, 7vw, 80px)', color: 'var(--cream)', fontStyle: 'italic', fontWeight: 300 }}>
@@ -94,8 +94,8 @@ export default function RSVP() {
             <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
               {['In person — Lagos', 'Virtually — Zoom', 'Both (different events)'].map(opt => (
                 <label key={opt} onClick={() => setForm({...form, attendance: opt})} style={{
-                  padding: '10px 20px', border: `0.5px solid ${form.attendance === opt ? 'var(--gold)' : 'rgba(185,142,76,0.3)'}`,
-                  background: form.attendance === opt ? 'rgba(185,142,76,0.08)' : 'transparent',
+                  padding: '10px 20px', border: `0.5px solid ${form.attendance === opt ? 'var(--gold)' : 'rgba(222,154,110,0.3)'}`,
+                  background: form.attendance === opt ? 'rgba(222,154,110,0.08)' : 'transparent',
                   fontSize: '13px', cursor: 'pointer', color: form.attendance === opt ? 'var(--gold)' : 'var(--stone)', transition: 'all 0.2s',
                 }}>
                   {opt}

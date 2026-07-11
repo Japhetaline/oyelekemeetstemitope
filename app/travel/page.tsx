@@ -14,7 +14,7 @@ export default function Travel() {
 
   return (
     <div style={{ paddingTop: '64px' }}>
-      <section style={{ background: "linear-gradient(rgba(76,14,26,0.72), rgba(76,14,26,0.84)), url('/assests/laykay06.jpeg') center/cover", padding: '100px 32px', textAlign: 'center' }}>
+      <section style={{ background: "linear-gradient(rgba(30,54,38,0.72), rgba(30,54,38,0.84)), url('/assests/laykay06.jpeg') center/cover", padding: '100px 32px', textAlign: 'center' }}>
         <Reveal>
           <div style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '20px' }}>✦ Travel & Stay ✦</div>
           <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(40px, 7vw, 80px)', color: 'var(--cream)', fontStyle: 'italic', fontWeight: 300 }}>
@@ -51,7 +51,7 @@ export default function Travel() {
 
         <Stagger>
         {hotels.map((h, i) => (
-          <StaggerItem key={i} style={{ padding: '28px 32px', background: i % 2 === 0 ? 'var(--cream-dark)' : 'var(--cream)', borderBottom: '0.5px solid rgba(185,142,76,0.2)', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px', alignItems: 'flex-start' }}>
+          <StaggerItem key={i} style={{ padding: '28px 32px', background: i % 2 === 0 ? 'var(--cream-dark)' : 'var(--cream)', borderBottom: '0.5px solid rgba(222,154,110,0.2)', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px', alignItems: 'flex-start' }}>
             <div>
               <div style={{ fontSize: '10px', letterSpacing: '0.15em', color: 'var(--gold)', marginBottom: '4px' }}>{h.stars} · {h.area}</div>
               <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '22px', color: 'var(--charcoal)', marginBottom: '6px' }}>{h.name}</h3>
@@ -79,7 +79,7 @@ export default function Travel() {
             ['Safety', 'Use trusted ride-hailing apps (Bolt, inDrive) or hotel-arranged cars. Avoid moving around late at night alone.'],
             ['Data / SIM', 'Get an MTN or Airtel SIM at the airport for affordable local data. WhatsApp works well across Nigeria.'],
           ].map(([title, tip], i) => (
-            <StaggerItem key={i} style={{ padding: '20px 0', borderBottom: '0.5px solid rgba(185,142,76,0.15)', display: 'flex', gap: '20px' }}>
+            <StaggerItem key={i} style={{ padding: '20px 0', borderBottom: '0.5px solid rgba(222,154,110,0.15)', display: 'flex', gap: '20px' }}>
               <div style={{ color: 'var(--gold)', fontSize: '10px', marginTop: '4px', flexShrink: 0 }}>✦</div>
               <div>
                 <div style={{ fontSize: '13px', fontWeight: 500, color: 'var(--cream)', marginBottom: '4px', letterSpacing: '0.05em' }}>{title}</div>

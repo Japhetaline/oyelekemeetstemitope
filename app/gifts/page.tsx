@@ -16,7 +16,7 @@ export default function Gifts() {
 
   return (
     <div style={{ paddingTop: '64px' }}>
-      <section style={{ background: "linear-gradient(rgba(76,14,26,0.72), rgba(76,14,26,0.84)), url('/assests/laykay07.jpeg') center/cover", padding: '100px 32px', textAlign: 'center' }}>
+      <section style={{ background: "linear-gradient(rgba(30,54,38,0.72), rgba(30,54,38,0.84)), url('/assests/laykay07.jpeg') center/cover", padding: '100px 32px', textAlign: 'center' }}>
         <Reveal>
           <div style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '20px' }}>✦ Gifts ✦</div>
           <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(40px, 7vw, 80px)', color: 'var(--cream)', fontStyle: 'italic', fontWeight: 300 }}>
@@ -28,18 +28,46 @@ export default function Gifts() {
         </Reveal>
       </section>
 
-      {/* Payment methods */}
-      <section style={{ background: 'var(--gold)', padding: '48px 32px' }}>
-        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-          <div style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(110,21,38,0.6)', marginBottom: '16px', textAlign: 'center' }}>How to give</div>
-          <div style={{ maxWidth: '420px', margin: '0 auto' }}>
-            <div style={{ background: 'rgba(110,21,38,0.08)', padding: '28px 24px' }}>
-              <div style={{ fontSize: '12px', fontWeight: 500, color: 'var(--charcoal)', marginBottom: '12px', letterSpacing: '0.05em' }}>Bank Transfer (International)</div>
-              {['For diaspora guests', 'Account Name: Oyeleke Oyejobi', 'Details sent on request via RSVP'].map((d, j) => (
-                <div key={j} style={{ fontSize: '13px', color: 'rgba(110,21,38,0.75)', marginBottom: '4px' }}>{d}</div>
-              ))}
-            </div>
-          </div>
+      {/* Bank details — the main way to give, made prominent */}
+      <section style={{ background: 'var(--charcoal)', padding: '72px 32px' }}>
+        <div style={{ maxWidth: '840px', margin: '0 auto' }}>
+          <Reveal style={{ textAlign: 'center', marginBottom: '44px' }}>
+            <div style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '16px' }}>How to give</div>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(30px, 5vw, 48px)', color: 'var(--cream)', fontStyle: 'italic' }}>Send a gift</h2>
+          </Reveal>
+
+          <Stagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))', gap: '20px' }}>
+            {[
+              {
+                label: 'International (UK) Account',
+                rows: [['Account name', 'Oyeleke Oyejobi'], ['Sort code', '04-29-09'], ['Account number', '82024634']],
+              },
+              {
+                label: 'Nigerian Bank Account',
+                rows: [['Account number', '0151096805'], ['Bank', 'GTBank Plc']],
+              },
+            ].map((acct, i) => (
+              <StaggerItem key={i}>
+                <div style={{ background: 'var(--cream)', padding: '32px 28px', borderTop: '3px solid var(--gold)', height: '100%' }}>
+                  <div style={{ fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold-dark)', fontWeight: 500, marginBottom: '20px' }}>{acct.label}</div>
+                  {acct.rows.map(([k, v], j) => (
+                    <div key={j} style={{
+                      display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: '16px',
+                      padding: '12px 0',
+                      borderBottom: j === acct.rows.length - 1 ? 'none' : '0.5px solid rgba(222,154,110,0.25)',
+                    }}>
+                      <span style={{ fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--stone)' }}>{k}</span>
+                      <span style={{ fontSize: '17px', fontWeight: 500, color: 'var(--charcoal)', letterSpacing: '0.02em' }}>{v}</span>
+                    </div>
+                  ))}
+                </div>
+              </StaggerItem>
+            ))}
+          </Stagger>
+
+          <p style={{ textAlign: 'center', marginTop: '28px', fontSize: '14px', color: 'var(--stone-light)', lineHeight: 1.8 }}>
+            Please use <span style={{ color: 'var(--gold-light)', fontWeight: 500 }}>&ldquo;Wedding gift&rdquo;</span> as the payment description.
+          </p>
         </div>
       </section>
 

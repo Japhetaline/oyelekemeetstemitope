@@ -7,24 +7,24 @@ export default function Families() {
     {
       side: "Bride's Family",
       name: "The Olatunji Family",
-      origin: "Lagos, Nigeria",
+      origin: "Abeokuta, Nigeria",
       members: [
         { role: "Father of the Bride", name: "CSP Shamwill Olatunji" },
         { role: "Mother of the Bride", name: "Mrs. Fausat Keshinro" },
         { role: "The Bride", name: "Temitope Olatunji" },
       ],
-      note: "The Olatunji family is proudly Yoruba, with warm roots in Lagos and a heritage rich in Yoruba tradition, faith and hospitality.",
+      note: "The Olatunji family is proudly Yoruba, with warm roots in Abeokuta and a heritage rich in Yoruba tradition, faith and hospitality.",
     },
     {
       side: "Groom's Family",
       name: "The Oyejobi Family",
-      origin: "Ogun State, Nigeria",
+      origin: "Ibadan, Oyo State",
       members: [
         { role: "Father of the Groom", name: "Rev. Oyetunji Oyejobi" },
         { role: "Mother of the Groom", name: "Mrs. Oluyomi Oyejobi" },
         { role: "The Groom", name: "Oyeleke Oyejobi" },
       ],
-      note: "The Oyejobi family is a devout Yoruba family whose warmth and love reach across Nigeria, the UK and the diaspora.",
+      note: "The Oyejobi family is a devout Yoruba family from Ibadan, Oyo State, whose warmth and love reach across Nigeria, the UK and the diaspora.",
     },
   ]
 
@@ -32,7 +32,7 @@ export default function Families() {
 
   return (
     <div style={{ paddingTop: '64px' }}>
-      <section style={{ background: "linear-gradient(rgba(76,14,26,0.72), rgba(76,14,26,0.84)), url('/assests/laykay04.jpeg') center/cover", padding: '100px 32px', textAlign: 'center' }}>
+      <section style={{ background: "linear-gradient(rgba(30,54,38,0.72), rgba(30,54,38,0.84)), url('/assests/laykay04.jpeg') center/cover", padding: '100px 32px', textAlign: 'center' }}>
         <Reveal>
           <div style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '20px' }}>✦ Meet the Families ✦</div>
           <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(40px, 7vw, 80px)', color: 'var(--cream)', fontStyle: 'italic', fontWeight: 300 }}>
@@ -57,7 +57,7 @@ export default function Families() {
               </div>
               <div style={{ marginBottom: '28px' }}>
                 {fam.members.map((m, j) => (
-                  <div key={j} style={{ padding: '14px 0', borderBottom: `0.5px solid ${i === 0 ? 'rgba(185,142,76,0.2)' : 'rgba(185,142,76,0.15)'}`, display: 'flex', flexDirection: 'column', gap: '3px' }}>
+                  <div key={j} style={{ padding: '14px 0', borderBottom: `0.5px solid ${i === 0 ? 'rgba(222,154,110,0.2)' : 'rgba(222,154,110,0.15)'}`, display: 'flex', flexDirection: 'column', gap: '3px' }}>
                     <div style={{ fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)' }}>{m.role}</div>
                     <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '20px', color: i === 0 ? 'var(--charcoal)' : 'var(--cream)' }}>{m.name}</div>
                   </div>
@@ -75,7 +75,7 @@ export default function Families() {
         <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(28px, 5vw, 52px)', color: 'var(--charcoal)', fontStyle: 'italic', marginBottom: '20px' }}>
           "Family is everything"
         </h2>
-        <p style={{ fontSize: '15px', color: 'rgba(110,21,38,0.75)', maxWidth: '560px', margin: '0 auto', lineHeight: 1.8 }}>
+        <p style={{ fontSize: '15px', color: 'rgba(52,84,60,0.75)', maxWidth: '560px', margin: '0 auto', lineHeight: 1.8 }}>
           We are deeply grateful for the love and support of both our families — near and far — as we begin this new chapter together.
         </p>
       </Reveal>

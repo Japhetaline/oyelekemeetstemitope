@@ -36,9 +36,9 @@ export default function Navbar() {
         transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}
         style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
-        background: scrolled ? 'rgba(246,237,227,0.96)' : 'transparent',
+        background: scrolled ? 'rgba(251,247,242,0.96)' : 'transparent',
         backdropFilter: scrolled ? 'blur(12px)' : 'none',
-        borderBottom: scrolled ? '0.5px solid rgba(185,142,76,0.3)' : 'none',
+        borderBottom: scrolled ? '0.5px solid rgba(222,154,110,0.3)' : 'none',
         transition: 'background 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease',
         padding: '0 32px',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
