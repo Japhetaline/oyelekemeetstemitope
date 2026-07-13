@@ -71,8 +71,8 @@ export default function DressCode() {
             Aso-ebi fabric packs are available for order. Each pack includes a green George wrapper and soft peach French lace. Orders close 8 weeks before the wedding.
           </p>
         </Reveal>
-        <Stagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '16px', maxWidth: '600px', margin: '0 auto', textAlign: 'left' }}>
-          {[['Fabric pack price', '₦35,000 / £50'], ['Order deadline', '15 August 2026'], ['Collection', 'Lagos or posted abroad'], ['Contact', 'aso-ebi@oyelekeandtemitope.com']].map(([label, val], i) => (
+        <Stagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px', maxWidth: '640px', margin: '0 auto', textAlign: 'left' }}>
+          {[['Male material', '₦30k — 4 yards with cap · ₦50k — 7 yards (agbada) with cap'], ['Women material', '₦45k — 3 yards with gele'], ['Collection', 'Lagos, Ogun and Abroad'], ['Contact', 'Oyejobi.oyelekee@gmail.com']].map(([label, val], i) => (
             <StaggerItem key={i} style={{ padding: '20px', border: '0.5px solid rgba(222,154,110,0.3)' }}>
               <div style={{ fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '6px' }}>{label}</div>
               <div style={{ fontSize: '14px', color: 'var(--cream)' }}>{val}</div>

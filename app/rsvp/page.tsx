@@ -9,13 +9,36 @@ export default function RSVP() {
     name: '', email: '', phone: '', country: '',
     attendance: '', dietary: '', message: '',
   })
-  const [status, setStatus] = useState<'idle'|'sending'|'done'>('idle')
+  const [status, setStatus] = useState<'idle'|'sending'|'done'|'error'>('idle')
+
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mqerklgn'
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setStatus('sending')
-    await new Promise(r => setTimeout(r, 1800))
-    setStatus('done')
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          country: form.country,
+          attendance: form.attendance,
+          dietary: form.dietary,
+          message: form.message,
+          _subject: `Wedding RSVP — ${form.name || 'New guest'}`,
+        }),
+      })
+      if (res.ok) {
+        setStatus('done')
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    }
   }
 
   const inputStyle = {
@@ -125,6 +148,13 @@ export default function RSVP() {
           onMouseLeave={e => { e.currentTarget.style.background = 'var(--charcoal)'; e.currentTarget.style.color = 'var(--gold)' }}>
             {status === 'sending' ? 'Sending...' : 'Confirm Attendance'}
           </button>
+
+          {status === 'error' && (
+            <p style={{ marginTop: '16px', fontSize: '13px', color: 'var(--gold-dark)', textAlign: 'center', lineHeight: 1.6 }}>
+              Something went wrong sending your RSVP. Please try again, or email us at{' '}
+              <a href="mailto:Oyejobi.oyelekee@gmail.com" style={{ color: 'var(--gold-dark)', textDecoration: 'underline' }}>Oyejobi.oyelekee@gmail.com</a>.
+            </p>
+          )}
         </form>
       </Reveal>
     </div>
