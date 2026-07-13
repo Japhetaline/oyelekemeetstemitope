@@ -6,14 +6,14 @@ export default function Families() {
   const families = [
     {
       side: "Bride's Family",
-      name: "The Olatunji Family",
+      name: "The Keshinro Family",
       origin: "Abeokuta, Nigeria",
       members: [
-        { role: "Father of the Bride", name: "CSP Shamwill Olatunji" },
+        { role: "Father of the Bride", name: "CSP Shamwill Keshinro" },
         { role: "Mother of the Bride", name: "Mrs. Fausat Keshinro" },
-        { role: "The Bride", name: "Temitope Olatunji" },
+        { role: "The Bride", name: "Temitope Keshinro" },
       ],
-      note: "The Olatunji family is proudly Yoruba, with warm roots in Abeokuta and a heritage rich in Yoruba tradition, faith and hospitality.",
+      note: "The Keshinro family is proudly Yoruba, with warm roots in Abeokuta and a heritage rich in Yoruba tradition, faith and hospitality.",
     },
     {
       side: "Groom's Family",
