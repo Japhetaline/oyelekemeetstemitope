@@ -72,7 +72,7 @@ export default function DressCode() {
           </p>
         </Reveal>
         <Stagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px', maxWidth: '640px', margin: '0 auto', textAlign: 'left' }}>
-          {[['Male material', '₦30k — 4 yards with cap · ₦50k — 7 yards (agbada) with cap'], ['Women material', '₦45k — 3 yards with gele'], ['Collection', 'Lagos, Ogun and Abroad'], ['Contact', 'Oyejobi.oyelekee@gmail.com']].map(([label, val], i) => (
+          {[['Male material', '₦30k — 4 yards with cap · ₦50k — 7 yards (agbada) with cap'], ['Women material', '₦45k — 3 yards with gele'], ['Collection', 'Lagos, Ogun State and Abroad'], ['Contact', 'Oyejobi.oyelekee@gmail.com']].map(([label, val], i) => (
             <StaggerItem key={i} style={{ padding: '20px', border: '0.5px solid rgba(222,154,110,0.3)' }}>
               <div style={{ fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '6px' }}>{label}</div>
               <div style={{ fontSize: '14px', color: 'var(--cream)' }}>{val}</div>

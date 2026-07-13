@@ -24,7 +24,7 @@ export default function Families() {
         { role: "Mother of the Groom", name: "Mrs. Oluyomi Oyejobi" },
         { role: "The Groom", name: "Oyeleke Oyejobi" },
       ],
-      note: "The Oyejobi family is a devout Yoruba family from Ibadan and Ogun state Nigeria, whose warmth and love reach across Nigeria, the UK and the diaspora.",
+      note: "The Oyejobi family is a devout Yoruba family from Ibadan and Ogun State Nigeria, whose warmth and love reach across Nigeria, the UK and the diaspora.",
     },
   ]
 

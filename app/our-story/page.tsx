@@ -67,7 +67,7 @@ export default function OurStory() {
                 <p style={{ fontSize: '13px', lineHeight: 1.8, color: 'var(--stone)' }}>
                   {name === 'Temitope'
                     ? 'Abeokuta born, bred and lived in Abuja and Ogun State before relocating abroad. She loves travelling and having fun, Sheyi vibes, and living happily ever after with Oyeleke.'
-                    : 'Ibadan born, bred and lived in Ogun and Lagos before relocating abroad to chase his dreams. Passionate about family and career, and about making Temitope and everyone around him happy, always.'}
+                    : 'Ibadan born, bred and lived in Ogun State and Lagos before relocating abroad to chase his dreams. Passionate about family and career, and about making Temitope and everyone around him happy, always.'}
                 </p>
               </motion.div>
               </StaggerItem>

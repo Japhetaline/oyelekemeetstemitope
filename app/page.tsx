@@ -119,7 +119,7 @@ export default function HomePage() {
           </motion.h1>
 
           <motion.div variants={heroItem} style={{ fontSize: '12px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--stone-light)', marginBottom: '64px' }}>
-            10 October 2026 · Ogun, Nigeria
+            10 October 2026 · Ogun State, Nigeria
           </motion.div>
 
           <motion.div variants={heroItem} style={{ marginBottom: '64px' }}>
@@ -176,7 +176,7 @@ export default function HomePage() {
               <div style={{ fontSize: '11px', letterSpacing: '0.3em', color: 'var(--gold)', marginBottom: '20px' }}>01</div>
               <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '32px', color: 'var(--cream)', marginBottom: '8px', fontStyle: 'italic' }}>Wedding</h3>
               <div style={{ fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '20px' }}>10 October 2026</div>
-              <p style={{ fontSize: '14px', lineHeight: 1.8, color: 'var(--stone-light)' }}>The main event — a beautiful fusion of culture, faith and love in Lagos, Nigeria.</p>
+              <p style={{ fontSize: '14px', lineHeight: 1.8, color: 'var(--stone-light)' }}>The main event — a beautiful fusion of culture, faith and love in Ogun State, Nigeria.</p>
             </Link>
           </motion.div>
         </Reveal>
