@@ -13,9 +13,9 @@ export default function DressCode() {
     },
     {
       event: 'Wedding Day',
-      code: 'Black Tie + Aso-ebi',
+      code: 'Aso-ebi',
       palette: 'Colours of the day — peach, white & green',
-      details: ['Aso-ebi: green George + peach lace', 'If not wearing aso-ebi: black tie or traditional', 'Ladies: full length gown in peach, white or green', 'Gentlemen: suit and tie or agbada'],
+      details: ['General guests: white native with peach gele or cap', 'Friends of the bride & groom: green native material with cap/gele (being sold — see below)'],
       colors: ['#2C4A37', '#FBF7F2', '#E7A986', '#5E7A55'],
     },
   ]
@@ -72,7 +72,7 @@ export default function DressCode() {
           </p>
         </Reveal>
         <Stagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px', maxWidth: '640px', margin: '0 auto', textAlign: 'left' }}>
-          {[['Male material', '₦30k — 4 yards with cap · ₦50k — 7 yards (agbada) with cap'], ['Women material', '₦45k — 3 yards with gele'], ['Collection', 'Lagos, Ogun State and Abroad'], ['Contact', 'Oyejobi.oyelekee@gmail.com']].map(([label, val], i) => (
+          {[['Male material', '₦30k — 4 yards with cap · ₦50k — 7 yards (agbada) with cap'], ['Women material', '₦45k — 3 yards with gele'], ['Collection', 'Lagos, Ogun State Nigeria · Sheffield UK — sent worldwide'], ['Contact', 'Oyejobi.oyelekee@gmail.com · +2349155571311']].map(([label, val], i) => (
             <StaggerItem key={i} style={{ padding: '20px', border: '0.5px solid rgba(222,154,110,0.3)' }}>
               <div style={{ fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '6px' }}>{label}</div>
               <div style={{ fontSize: '14px', color: 'var(--cream)' }}>{val}</div>
