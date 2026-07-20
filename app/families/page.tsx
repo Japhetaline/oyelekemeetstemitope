@@ -9,7 +9,7 @@ export default function Families() {
       name: "The Keshinro Family",
       origin: "Abeokuta, Nigeria",
       members: [
-        { role: "Father of the Bride", name: "CSP Shamwill Keshinro" },
+        { role: "Father of the Bride", name: "CSP Shamwill Olatunji" },
         { role: "Mother of the Bride", name: "Mrs. Fausat Keshinro" },
         { role: "The Bride", name: "Temitope Keshinro" },
       ],
@@ -20,7 +20,7 @@ export default function Families() {
       name: "The Oyejobi Family",
       origin: "Ibadan, Oyo State",
       members: [
-        { role: "Father of the Groom", name: "Rev. Oyetunji Oyejobi" },
+        { role: "Father of the Groom", name: "Late. Mr Oyetunji Oyejobi" },
         { role: "Mother of the Groom", name: "Mrs. Oluyomi Oyejobi" },
         { role: "The Groom", name: "Oyeleke Oyejobi" },
       ],

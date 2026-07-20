@@ -115,7 +115,7 @@ export default function RSVP() {
           <div style={{ marginBottom: '32px' }}>
             <label style={{ fontSize: '10px', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--gold)', display: 'block', marginBottom: '16px' }}>Attendance type *</label>
             <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-              {['In person — Lagos', 'Virtually — Zoom', 'In person - UK'].map(opt => (
+              {['In person — Nigeria', 'Virtually — Zoom', 'In person - UK'].map(opt => (
                 <label key={opt} onClick={() => setForm({...form, attendance: opt})} style={{
                   padding: '10px 20px', border: `0.5px solid ${form.attendance === opt ? 'var(--gold)' : 'rgba(222,154,110,0.3)'}`,
                   background: form.attendance === opt ? 'rgba(222,154,110,0.08)' : 'transparent',
