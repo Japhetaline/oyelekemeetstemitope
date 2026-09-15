@@ -14,7 +14,7 @@ export default function Events() {
       color: 'var(--charcoal)',
       textColor: 'var(--cream)',
       dark: true,
-      desc: 'Our traditional Nigerian engagement — a deeply meaningful ceremony where the groom&apos;s family formally presents gifts and asks for the bride&apos;s hand. Diaspora family and friends join via Zoom.',
+      desc: 'Our traditional Nigerian engagement — a deeply meaningful ceremony where the groom’s family formally presents gifts and asks for the bride’s hand. Diaspora family and friends join via Zoom.',
       details: ['Traditional items presentation', 'Yoruba prayers and blessings', 'Zoom link sent to RSVPs', 'Dresscode: Full traditional attire'],
     },
     {
@@ -29,6 +29,19 @@ export default function Events() {
       dark: true,
       desc: 'The main event. Our Nikah — a sacred Islamic marriage ceremony — followed by the traditional wedding and a reception filled with prayer, music, dancing, Nigerian cuisine, and love. We cannot wait to celebrate with you.',
       details: ['Nikah ceremony 11:00 AM – 1:00 PM', 'Traditional wedding 1:00 PM – 3:30 PM', 'Reception immediately after the traditional', 'Aso-ebi in peach, white & green'],
+    },
+    {
+      num: '03',
+      title: 'UK Wedding Celebration',
+      date: '10 October 2026',
+      time: '1:00 PM prompt (UK time)',
+      location: 'Wadsley Church Hall, Sheffield',
+      type: 'In Person (United Kingdom)',
+      color: 'var(--charcoal)',
+      textColor: 'var(--cream)',
+      dark: true,
+      desc: 'Together with our families, we warmly invite our family and friends in the United Kingdom to celebrate our marriage with us in Sheffield. Two hearts, one journey, forever — we cannot wait to celebrate with you.',
+      details: ['Wadsley Church Hall, Worrall Road', 'Sheffield, S6 4BB', 'Please arrive in good time — we begin at 1:00 PM prompt', 'Aso-ebi in peach, white & green'],
     },
   ]
 
@@ -51,7 +64,7 @@ export default function Events() {
         <Reveal>
           <div style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '20px' }}>✦ Events ✦</div>
           <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(40px, 7vw, 80px)', color: 'var(--cream)', fontStyle: 'italic', fontWeight: 300 }}>
-            Two celebrations
+            Three celebrations
           </h1>
         </Reveal>
       </section>
@@ -97,7 +110,7 @@ export default function Events() {
         <Reveal style={{ textAlign: 'center', marginBottom: '56px' }}>
           <div style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '20px' }}>✦ Order of Events ✦</div>
           <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(32px, 5vw, 52px)', color: 'var(--charcoal)', fontStyle: 'italic' }}>
-            Ceremony programme
+            Nigeria ceremony programme
           </h2>
         </Reveal>
 

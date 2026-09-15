@@ -13,6 +13,12 @@ const IMAGES = [
   '/assests/laykay06.jpeg',
   '/assests/laykay07.jpeg',
   '/assests/laykay08.jpeg',
+  '/assests/Prewedding_shoot1.jpeg',
+  '/assests/Prewedding_shoot2.jpeg',
+  '/assests/Prewedding_shoot3.jpeg',
+  '/assests/Prewedding_shoot4.jpeg',
+  '/assests/Prewedding_shoot5.jpeg',
+  '/assests/Prewedding_shoot6.jpeg',
 ].map(encodeURI)
 
 export default function Slideshow() {

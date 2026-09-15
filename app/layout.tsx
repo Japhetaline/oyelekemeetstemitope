@@ -5,7 +5,7 @@ import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
   title: 'Oyeleke & Temitope — October 2026',
-  description: 'Join us as we celebrate our love',
+  description: 'Join us as we celebrate our love — 10 October 2026, Abeokuta, Nigeria and Wadsley Church Hall, Sheffield, UK.',
   icons: {
     icon: [{ url: '/assests/wedding-favicon.png', type: 'image/png' }],
   },

@@ -18,6 +18,13 @@ export default function DressCode() {
       details: ['General guests: white native with peach gele or cap', 'Friends of the bride & groom: green native material with cap/gele (being sold — see below)'],
       colors: ['#2C4A37', '#FBF7F2', '#E7A986', '#5E7A55'],
     },
+    {
+      event: 'UK Wedding Celebration · Sheffield',
+      code: 'Aso-ebi',
+      palette: 'Colours of the day — peach, white & green',
+      details: ['The same colours of the day as the wedding in Nigeria', 'General guests: white native with peach gele or cap', 'Friends of the bride & groom: green native material with cap/gele', 'Aso-ebi can be collected in Sheffield — see details below'],
+      colors: ['#2C4A37', '#FBF7F2', '#E7A986', '#5E7A55'],
+    },
   ]
 
   const reduce = useReducedMotion()

@@ -3,7 +3,24 @@ import Link from 'next/link'
 import { motion, useReducedMotion } from 'framer-motion'
 import CountdownTimer from '@/components/CountdownTimer'
 import Slideshow from '@/components/Slideshow'
-import { Reveal, EASE } from '@/components/motion/Reveal'
+import { Reveal, Stagger, StaggerItem, EASE } from '@/components/motion/Reveal'
+
+/* The two venues, in ceremony order. `query` is URL-encoded once and reused for
+   both the embedded map and the "Get Directions" link. */
+const VENUES = [
+  {
+    country: 'Nigeria',
+    name: 'DLK Event Centre',
+    address: 'M.K.O Abiola Way · Abeokuta, Ogun State',
+    query: encodeURIComponent('DLK Event Centre M.K.O Abiola Way Abeokuta Ogun State'),
+  },
+  {
+    country: 'United Kingdom',
+    name: 'Wadsley Church Hall',
+    address: 'Worrall Road · Sheffield, S6 4BB',
+    query: encodeURIComponent('Wadsley Church Hall Worrall Road Sheffield S6 4BB'),
+  },
+]
 
 export default function HomePage() {
   const reduce = useReducedMotion()
@@ -119,7 +136,7 @@ export default function HomePage() {
           </motion.h1>
 
           <motion.div variants={heroItem} style={{ fontSize: '12px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--stone-light)', marginBottom: '64px' }}>
-            10 October 2026 · Ogun State, Nigeria
+            10 October 2026 · Ogun State, Nigeria &amp; Sheffield, UK
           </motion.div>
 
           <motion.div variants={heroItem} style={{ marginBottom: '64px' }}>
@@ -162,7 +179,8 @@ export default function HomePage() {
           </h2>
           <p style={{ fontSize: '15px', lineHeight: 1.8, color: 'var(--stone)', marginBottom: '40px' }}>
             Though we live abroad, our hearts are deeply rooted in Nigerian tradition.
-            Join us from anywhere in the world as we celebrate our love across two unforgettable events.
+            Join us from anywhere in the world as we celebrate our love in Abeokuta, Nigeria
+            and in Sheffield, United Kingdom.
           </p>
           <div style={{ width: '40px', height: '0.5px', background: 'var(--gold)', margin: '0 auto' }} />
         </Reveal>
@@ -170,16 +188,33 @@ export default function HomePage() {
 
       {/* THE WEDDING */}
       <section style={{ padding: '80px 32px', maxWidth: '1100px', margin: '0 auto' }}>
-        <Reveal>
-          <motion.div whileHover={reduce ? undefined : { y: -6 }} transition={{ duration: 0.4, ease: EASE }}>
-            <Link href="/events" style={{ textDecoration: 'none', display: 'block', padding: '56px 48px', background: 'var(--charcoal)', border: '0.5px solid transparent' }}>
-              <div style={{ fontSize: '11px', letterSpacing: '0.3em', color: 'var(--gold)', marginBottom: '20px' }}>01</div>
-              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '32px', color: 'var(--cream)', marginBottom: '8px', fontStyle: 'italic' }}>Wedding</h3>
-              <div style={{ fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '20px' }}>10 October 2026</div>
-              <p style={{ fontSize: '14px', lineHeight: 1.8, color: 'var(--stone-light)' }}>The main event — a beautiful fusion of culture, faith and love in Ogun State, Nigeria.</p>
-            </Link>
-          </motion.div>
-        </Reveal>
+        <Stagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2px' }}>
+          {[
+            {
+              num: '01',
+              title: 'Nigeria',
+              date: '10 October 2026',
+              desc: 'The main event — a beautiful fusion of culture, faith and love at DLK Event Centre, Abeokuta, Ogun State.',
+            },
+            {
+              num: '02',
+              title: 'United Kingdom',
+              date: '10 October 2026 · 1:00 PM',
+              desc: 'A celebration with our family and friends in the UK at Wadsley Church Hall, Worrall Road, Sheffield, S6 4BB.',
+            },
+          ].map(card => (
+            <StaggerItem key={card.num}>
+              <motion.div whileHover={reduce ? undefined : { y: -6 }} transition={{ duration: 0.4, ease: EASE }} style={{ height: '100%' }}>
+                <Link href="/events" style={{ textDecoration: 'none', display: 'block', height: '100%', padding: '56px 48px', background: 'var(--charcoal)', border: '0.5px solid transparent' }}>
+                  <div style={{ fontSize: '11px', letterSpacing: '0.3em', color: 'var(--gold)', marginBottom: '20px' }}>{card.num}</div>
+                  <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '32px', color: 'var(--cream)', marginBottom: '8px', fontStyle: 'italic' }}>{card.title}</h3>
+                  <div style={{ fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '20px' }}>{card.date}</div>
+                  <p style={{ fontSize: '14px', lineHeight: 1.8, color: 'var(--stone-light)' }}>{card.desc}</p>
+                </Link>
+              </motion.div>
+            </StaggerItem>
+          ))}
+        </Stagger>
       </section>
 
       {/* SLIDESHOW GALLERY */}
@@ -203,42 +238,57 @@ export default function HomePage() {
           <div style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '20px' }}>
             ✦ Find Your Way ✦
           </div>
-          <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(32px, 5vw, 52px)', color: 'var(--charcoal)', fontStyle: 'italic', marginBottom: '12px' }}>
-            DLK Event Centre
+          <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(32px, 5vw, 52px)', color: 'var(--charcoal)', fontStyle: 'italic' }}>
+            Our two venues
           </h2>
-          <p style={{ fontSize: '14px', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--stone)' }}>
-            M.K.O Abiola Way · Abeokuta, Ogun State
-          </p>
         </Reveal>
-        <Reveal>
-          <div style={{ position: 'relative', width: '100%', aspectRatio: '16 / 9', overflow: 'hidden', border: '0.5px solid rgba(222,154,110,0.3)' }}>
-            <iframe
-              title="Map to DLK Event Centre, M.K.O Abiola Way, Abeokuta"
-              src="https://maps.google.com/maps?q=DLK%20Event%20Centre%20M.K.O%20Abiola%20Way%20Abeokuta%20Ogun%20State&t=&z=15&ie=UTF8&iwloc=&output=embed"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0 }}
-            />
-          </div>
-        </Reveal>
-        <Reveal style={{ textAlign: 'center', marginTop: '32px' }}>
-          <motion.div whileHover={reduce ? undefined : { y: -3 }} transition={{ duration: 0.3, ease: EASE }} style={{ display: 'inline-block' }}>
-            <a
-              href="https://www.google.com/maps/dir/?api=1&destination=DLK+Event+Centre+M.K.O+Abiola+Way+Abeokuta+Ogun+State"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                padding: '14px 36px', background: 'var(--gold)', color: 'var(--charcoal)',
-                textDecoration: 'none', fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase',
-                fontWeight: 500, display: 'inline-block',
-              }}
-              onMouseEnter={e => (e.currentTarget.style.opacity = '0.85')}
-              onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
-            >
-              Get Directions
-            </a>
-          </motion.div>
-        </Reveal>
+
+        <Stagger style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '48px' }}>
+          {VENUES.map(v => (
+            <StaggerItem key={v.name}>
+              <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+                <div style={{ fontSize: '10px', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '10px' }}>
+                  {v.country}
+                </div>
+                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(24px, 3vw, 32px)', color: 'var(--charcoal)', fontStyle: 'italic', marginBottom: '10px' }}>
+                  {v.name}
+                </h3>
+                <p style={{ fontSize: '13px', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--stone)', lineHeight: 1.7 }}>
+                  {v.address}
+                </p>
+              </div>
+
+              <div style={{ position: 'relative', width: '100%', aspectRatio: '4 / 3', overflow: 'hidden', border: '0.5px solid rgba(222,154,110,0.3)' }}>
+                <iframe
+                  title={`Map to ${v.name}, ${v.address}`}
+                  src={`https://maps.google.com/maps?q=${v.query}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0 }}
+                />
+              </div>
+
+              <div style={{ textAlign: 'center', marginTop: '24px' }}>
+                <motion.div whileHover={reduce ? undefined : { y: -3 }} transition={{ duration: 0.3, ease: EASE }} style={{ display: 'inline-block' }}>
+                  <a
+                    href={`https://www.google.com/maps/dir/?api=1&destination=${v.query}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      padding: '14px 36px', background: 'var(--gold)', color: 'var(--charcoal)',
+                      textDecoration: 'none', fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase',
+                      fontWeight: 500, display: 'inline-block',
+                    }}
+                    onMouseEnter={e => (e.currentTarget.style.opacity = '0.85')}
+                    onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
+                  >
+                    Get Directions
+                  </a>
+                </motion.div>
+              </div>
+            </StaggerItem>
+          ))}
+        </Stagger>
       </section>
 
       {/* CTA STRIP */}
