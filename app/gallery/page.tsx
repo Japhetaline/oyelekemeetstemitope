@@ -1,9 +1,11 @@
 import { Reveal } from '@/components/motion/Reveal'
 import GalleryGrid from '@/components/GalleryGrid'
 import { getGalleryImages } from '@/lib/cloudinary'
+import { getDriveMedia, DRIVE_FOLDER_URL } from '@/lib/drive'
 
 export default async function Gallery() {
-  const images = await getGalleryImages()
+  const [driveMedia, cloudinaryImages] = await Promise.all([getDriveMedia(), getGalleryImages()])
+  const images = [...driveMedia, ...cloudinaryImages]
 
   return (
     <div style={{ paddingTop: '64px' }}>
@@ -14,10 +16,10 @@ export default async function Gallery() {
             Our memories
           </h1>
           <p style={{ fontSize: '14px', color: 'var(--stone-light)', marginTop: '20px', maxWidth: '480px', margin: '20px auto 0', lineHeight: 1.8 }}>
-            Photographs from our journey together. After each event, guests can add their own photos here.
+            Photographs and videos from our journey together and from each of our events.
           </p>
           <a
-            href="https://drive.google.com/drive/folders/1SToA7g_7XzSu5uGBNP4pQMz-p5_PxM6z"
+            href={DRIVE_FOLDER_URL}
             target="_blank"
             rel="noopener noreferrer"
             style={{ display: 'inline-block', marginTop: '32px', padding: '14px 32px', border: '1px solid var(--gold)', color: 'var(--gold)', fontSize: '12px', letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none' }}

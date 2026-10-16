@@ -15,6 +15,8 @@ export interface GalleryImage {
   width: number
   height: number
   alt: string
+  /** Embeddable player URL when this item is a video (url is then its thumbnail). */
+  videoUrl?: string
 }
 
 interface CloudinaryResource {
