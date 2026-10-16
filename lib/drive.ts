@@ -1,21 +1,34 @@
 /**
- * Server-only helper that lists every photo and video in a public Google Drive
- * folder (including subfolders) so the gallery can render them.
+ * Server-only helper that lists every photo and video in public Google Drive
+ * folders (including subfolders) so the gallery can render them.
  *
  * Required environment variables (set in .env.local and in your hosting settings):
- *   GOOGLE_DRIVE_API_KEY    API key from Google Cloud Console with the Drive API enabled
- *   GOOGLE_DRIVE_FOLDER_ID  (optional) folder to list — defaults to the wedding folder
+ *   GOOGLE_DRIVE_API_KEY            API key from Google Cloud Console with the Drive API enabled
+ *                                   (one key works for every folder)
+ *   GOOGLE_DRIVE_UK_FOLDER_ID       (optional) UK wedding folder — defaults to the current one
+ *   GOOGLE_DRIVE_NIGERIA_FOLDER_ID  (optional) Nigeria wedding folder — tab shows "coming soon" until set
  *
- * The folder must be shared as "Anyone with the link can view", otherwise the
- * API returns nothing and the images will not load for visitors.
+ * Each folder must be shared as "Anyone with the link can view", otherwise the
+ * API returns nothing and the images will not load for visitors. Keep the
+ * folders separate (not one inside the other), since subfolders are included.
  */
 
-import type { GalleryImage } from '@/lib/cloudinary'
+export interface GalleryImage {
+  url: string
+  publicId: string
+  width: number
+  height: number
+  alt: string
+  /** Embeddable player URL when this item is a video (url is then its thumbnail). */
+  videoUrl?: string
+}
 
-export const DRIVE_FOLDER_ID =
-  process.env.GOOGLE_DRIVE_FOLDER_ID || '1SToA7g_7XzSu5uGBNP4pQMz-p5_PxM6z'
+export const UK_FOLDER_ID =
+  process.env.GOOGLE_DRIVE_UK_FOLDER_ID || '1SToA7g_7XzSu5uGBNP4pQMz-p5_PxM6z'
 
-export const DRIVE_FOLDER_URL = `https://drive.google.com/drive/folders/${DRIVE_FOLDER_ID}`
+export const NIGERIA_FOLDER_ID = process.env.GOOGLE_DRIVE_NIGERIA_FOLDER_ID || ''
+
+export const folderUrl = (folderId: string) => `https://drive.google.com/drive/folders/${folderId}`
 
 const FOLDER_MIME = 'application/vnd.google-apps.folder'
 // Guard against runaway recursion if someone nests folders very deeply.
@@ -57,15 +70,18 @@ async function listFolder(folderId: string, apiKey: string): Promise<DriveFile[]
   return files
 }
 
-export async function getDriveMedia(): Promise<GalleryImage[]> {
+/** Lists a folder's media split into photos and videos. Empty if the key or folder is missing. */
+export async function getDriveMedia(
+  folderId: string
+): Promise<{ photos: GalleryImage[]; videos: GalleryImage[] }> {
   const apiKey = process.env.GOOGLE_DRIVE_API_KEY
+  const empty = { photos: [], videos: [] }
 
-  // Without an API key there is nothing to list — render without Drive items.
-  if (!apiKey) return []
+  if (!apiKey || !folderId) return empty
 
   try {
     const media: DriveFile[] = []
-    const queue = [DRIVE_FOLDER_ID]
+    const queue = [folderId]
     let visited = 0
 
     while (queue.length && visited < MAX_FOLDERS) {
@@ -77,7 +93,7 @@ export async function getDriveMedia(): Promise<GalleryImage[]> {
       }
     }
 
-    return media.map(f => {
+    const items = media.map(f => {
       const isVideo = f.mimeType.startsWith('video/')
       const meta = isVideo ? f.videoMediaMetadata : f.imageMediaMetadata
       // Rotation 1 or 3 means the photo is displayed sideways, so swap dimensions.
@@ -96,8 +112,13 @@ export async function getDriveMedia(): Promise<GalleryImage[]> {
         videoUrl: isVideo ? `https://drive.google.com/file/d/${f.id}/preview` : undefined,
       }
     })
+
+    return {
+      photos: items.filter(i => !i.videoUrl),
+      videos: items.filter(i => i.videoUrl),
+    }
   } catch (err) {
     console.error('Google Drive request error:', err)
-    return []
+    return empty
   }
 }

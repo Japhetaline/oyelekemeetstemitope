@@ -1,11 +1,17 @@
 import { Reveal } from '@/components/motion/Reveal'
-import GalleryGrid from '@/components/GalleryGrid'
-import { getGalleryImages } from '@/lib/cloudinary'
-import { getDriveMedia, DRIVE_FOLDER_URL } from '@/lib/drive'
+import GalleryTabs from '@/components/GalleryTabs'
+import { getDriveMedia, folderUrl, UK_FOLDER_ID, NIGERIA_FOLDER_ID } from '@/lib/drive'
+
+const buttonStyle = { display: 'inline-block', padding: '14px 32px', border: '1px solid var(--gold)', color: 'var(--gold)', fontSize: '12px', letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none' } as const
 
 export default async function Gallery() {
-  const [driveMedia, cloudinaryImages] = await Promise.all([getDriveMedia(), getGalleryImages()])
-  const images = [...driveMedia, ...cloudinaryImages]
+  const [uk, nigeria] = await Promise.all([getDriveMedia(UK_FOLDER_ID), getDriveMedia(NIGERIA_FOLDER_ID)])
+
+  const tabs = [
+    { label: 'UK Wedding', items: uk.photos, empty: 'Our UK wedding photos are on the way — check back soon.' },
+    { label: 'Nigeria Wedding', items: nigeria.photos, empty: 'Our Nigeria wedding photos are coming soon.' },
+    { label: 'Videos', items: [...uk.videos, ...nigeria.videos], empty: 'Our videos are on the way — check back soon.' },
+  ]
 
   return (
     <div style={{ paddingTop: '64px' }}>
@@ -18,18 +24,20 @@ export default async function Gallery() {
           <p style={{ fontSize: '14px', color: 'var(--stone-light)', marginTop: '20px', maxWidth: '480px', margin: '20px auto 0', lineHeight: 1.8 }}>
             Photographs and videos from our journey together and from each of our events.
           </p>
-          <a
-            href={DRIVE_FOLDER_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ display: 'inline-block', marginTop: '32px', padding: '14px 32px', border: '1px solid var(--gold)', color: 'var(--gold)', fontSize: '12px', letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none' }}
-          >
-            View event photos &amp; videos
-          </a>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center', marginTop: '32px' }}>
+            <a href={folderUrl(UK_FOLDER_ID)} target="_blank" rel="noopener noreferrer" style={buttonStyle}>
+              UK photos &amp; videos
+            </a>
+            {NIGERIA_FOLDER_ID && (
+              <a href={folderUrl(NIGERIA_FOLDER_ID)} target="_blank" rel="noopener noreferrer" style={buttonStyle}>
+                Nigeria photos &amp; videos
+              </a>
+            )}
+          </div>
         </Reveal>
       </section>
 
-      <GalleryGrid images={images} />
+      <GalleryTabs tabs={tabs} />
     </div>
   )
 }

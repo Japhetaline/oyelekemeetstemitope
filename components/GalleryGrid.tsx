@@ -2,22 +2,27 @@
 import { useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { EASE } from '@/components/motion/Reveal'
-import type { GalleryImage } from '@/lib/cloudinary'
+import type { GalleryImage } from '@/lib/drive'
 
-export default function GalleryGrid({ images }: { images: GalleryImage[] }) {
+const PAGE_SIZE = 12
+
+export default function GalleryGrid({ images, emptyMessage }: { images: GalleryImage[]; emptyMessage: string }) {
   const reduce = useReducedMotion()
   // Videos show a thumbnail until clicked, so the page doesn't load every player up front.
   const [playing, setPlaying] = useState<string | null>(null)
+  // Only render the first batch; "See more" reveals the next one.
+  const [visible, setVisible] = useState(PAGE_SIZE)
 
   return (
     <section style={{ padding: '64px 32px', maxWidth: '1100px', margin: '0 auto' }}>
       {images.length === 0 ? (
         <p style={{ textAlign: 'center', fontSize: '14px', color: 'var(--stone)', lineHeight: 1.8 }}>
-          Our photos are on the way — check back soon.
+          {emptyMessage}
         </p>
       ) : (
+        <>
         <div style={{ columns: '3 220px', gap: '4px' }}>
-          {images.map((photo, i) => {
+          {images.slice(0, visible).map((photo, i) => {
             const isPlaying = photo.videoUrl && playing === photo.publicId
             return (
               <motion.div
@@ -73,6 +78,17 @@ export default function GalleryGrid({ images }: { images: GalleryImage[] }) {
             )
           })}
         </div>
+        {visible < images.length && (
+          <div style={{ textAlign: 'center', marginTop: '40px' }}>
+            <button
+              onClick={() => setVisible(v => v + PAGE_SIZE)}
+              style={{ padding: '14px 32px', border: '1px solid var(--gold)', background: 'transparent', color: 'var(--gold)', fontSize: '12px', letterSpacing: '0.2em', textTransform: 'uppercase', cursor: 'pointer' }}
+            >
+              See more ({images.length - visible} more)
+            </button>
+          </div>
+        )}
+        </>
       )}
     </section>
   )
