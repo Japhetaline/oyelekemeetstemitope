@@ -16,6 +16,14 @@ export default async function Gallery() {
           <p style={{ fontSize: '14px', color: 'var(--stone-light)', marginTop: '20px', maxWidth: '480px', margin: '20px auto 0', lineHeight: 1.8 }}>
             Photographs from our journey together. After each event, guests can add their own photos here.
           </p>
+          <a
+            href="https://drive.google.com/drive/folders/1SToA7g_7XzSu5uGBNP4pQMz-p5_PxM6z"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ display: 'inline-block', marginTop: '32px', padding: '14px 32px', border: '1px solid var(--gold)', color: 'var(--gold)', fontSize: '12px', letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none' }}
+          >
+            View event photos &amp; videos
+          </a>
         </Reveal>
       </section>
 
