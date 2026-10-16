@@ -24,7 +24,7 @@ export interface GalleryImage {
 }
 
 export const UK_FOLDER_ID =
-  process.env.GOOGLE_DRIVE_UK_FOLDER_ID || '1SToA7g_7XzSu5uGBNP4pQMz-p5_PxM6z'
+  process.env.GOOGLE_DRIVE_UK_FOLDER_ID || '1yrmh9Z0WrEr2P7KLUtBCzIFok_Kwj9lX'
 
 export const NIGERIA_FOLDER_ID = process.env.GOOGLE_DRIVE_NIGERIA_FOLDER_ID || ''
 
